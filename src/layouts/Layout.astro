@@ -11,33 +11,36 @@ type Props = DeepPartial<SEOProps>;
 const props = Astro.props as SEOProps;
 
 const defaultSEO: SEOProps = {
-	titleTemplate: `%s | OUS Metaverse`,
-	description: t({
-		ja: "OUS Metaverseは岡山理科大学の公認メタバースサークルです！\n私たちは「メタバースをもっと身近に」をモットーに、より多くの人にメタバースの魅力を広めつつ、メタバースと共に楽しく大学生活を送るために活動しています。",
-		en: "OUS Metaverse the official Metaverse club of Okayama University of Scienceǃ\nWith the motto ＂Bringing the Metaverse Closer to Everyone‚＂ we are working to share the appeal of the metaverse with more people while enjoying our university life alongside it․",
-		zh: "OUS Metaverse是冈山理科大学的官方元宇宙社团！\n本着让元宇宙更加贴近生活的宗旨，我们致力于向更多人传播元宇宙的魅力，并在元宇宙的陪伴下享受丰富多彩的大学生活。"
-	}),
-	languageAlternates: Object.entries(allRoutes).map(([lang, href]) => ({ href: new URL(href, Astro.site).href, hrefLang: lang })),
-	openGraph: {
-		basic: {
-			title: t({
-				ja: "OUS Metaverse | メタバースをもっと身近に",
-				en: "OUS Metaverse | Bringing the Metaverse Closer",
-				zh: "OUS Metaverse | 让元宇宙更加贴近生活",
-			}),
-			type: 'article',
-			image: new URL('/ogp_default.png', Astro.site).href,
-		},
-		image: {
-			width: 1200,
-			height: 630,
-			alt: "OUS Metaverse",
-		},
-	},
-	twitter: {
-		card: "summary_large_image",
-		site: "@OusMetaverse",
-	},
+    titleTemplate: `%s | OUS Metaverse`,
+    description: t({
+        ja: "OUS Metaverseは岡山理科大学の公認メタバースサークルです！\n私たちは「メタバースをもっと身近に」をモットーに、より多くの人にメタバースの魅力を広めつつ、メタバースと共に楽しく大学生活を送るために活動しています。",
+        en: "OUS Metaverse the official Metaverse club of Okayama University of Scienceǃ\nWith the motto ＂Bringing the Metaverse Closer to Everyone‚＂ we are working to share the appeal of the metaverse with more people while enjoying our university life alongside it․",
+        zh: "OUS Metaverse是冈山理科大学的官方元宇宙社团！\n本着让元宇宙更加贴近生活的宗旨，我们致力于向更多人传播元宇宙的魅力，并在元宇宙的陪伴下享受丰富多彩的大学生活。",
+    }),
+    languageAlternates: Object.entries(allRoutes).map(([lang, href]) => ({
+        href: new URL(href, Astro.site).href,
+        hrefLang: lang,
+    })),
+    openGraph: {
+        basic: {
+            title: t({
+                ja: "OUS Metaverse | メタバースをもっと身近に",
+                en: "OUS Metaverse | Bringing the Metaverse Closer",
+                zh: "OUS Metaverse | 让元宇宙更加贴近生活",
+            }),
+            type: "article",
+            image: new URL("/ogp_default.png", Astro.site).href,
+        },
+        image: {
+            width: 1200,
+            height: 630,
+            alt: "OUS Metaverse",
+        },
+    },
+    twitter: {
+        card: "summary_large_image",
+        site: "@OusMetaverse",
+    },
 };
 
 const mergedSEO = merge(defaultSEO, props);
@@ -45,17 +48,15 @@ const mergedSEO = merge(defaultSEO, props);
 
 <!doctype html>
 <html lang={locale}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<SEO {...mergedSEO} />
-	</head>
-	<body>
-		<slot />
-	</body>
-
-	<!-- Preline UI -->
-	<script is:inline src="../../node_modules/preline/dist/index.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <SEO {...mergedSEO} />
+    </head>
+    <body>
+        <slot />
+    </body><!-- Preline UI -->
+    <script is:inline src="../node_modules/preline/dist/index.js"></script>
 </html>

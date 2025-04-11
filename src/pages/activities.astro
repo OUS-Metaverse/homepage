@@ -1,0 +1,320 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../libs/i18n";
+import { Icon } from "astro-icon/components";
+
+const { t, l } = useTranslations(Astro.url);
+
+// NOTE: 実際の実装では Content Collections を利用してデータを取得します
+const activities = [
+    {
+        slug: "vrchat-world-creation",
+        title: {
+            ja: "VRChat内の新ワールド制作",
+            en: "Creating New Worlds in VRChat",
+            zh: "在VRChat中创建新世界",
+        },
+        date: "2023-11-15",
+        image: "/assets/activities/vrchat-world.jpg",
+        summary: {
+            ja: "サークルメンバーで協力して、OUS Metaverseオリジナルの新しいVRChatワールドを制作しました。Unity開発からライティングまで幅広い技術を学びながら進めました。",
+            en: "We collaborated with circle members to create a new VRChat world original to OUS Metaverse. We proceeded while learning a wide range of technologies from Unity development to lighting.",
+            zh: "我们与社团成员合作，创建了OUS Metaverse原创的新VRChat世界。我们在学习从Unity开发到灯光等广泛技术的同时推进了项目。",
+        },
+        category: "creation",
+        featured: true,
+    },
+    {
+        slug: "virtual-school-festival",
+        title: {
+            ja: "バーチャル学園祭出展",
+            en: "Virtual School Festival Exhibition",
+            zh: "虚拟校园节展览",
+        },
+        date: "2023-10-20",
+        image: "/assets/activities/virtual-festival.jpg",
+        summary: {
+            ja: "岡山理科大学の学園祭にて、バーチャル空間を活用した展示を行いました。来場者はVRヘッドセットを装着し、メタバース空間でサークル作品を体験しました。",
+            en: "At Okayama University of Science's school festival, we held an exhibition utilizing virtual space. Visitors wore VR headsets and experienced circle works in the metaverse space.",
+            zh: "在冈山理科大学的校园节上，我们举办了利用虚拟空间的展览。访客戴上VR头显，在元宇宙空间中体验了社团作品。",
+        },
+        category: "event",
+        featured: true,
+    },
+    {
+        slug: "vr-workshop-beginners",
+        title: {
+            ja: "初心者向けVR講座",
+            en: "VR Workshop for Beginners",
+            zh: "面向初学者的VR讲座",
+        },
+        date: "2023-09-05",
+        image: "/assets/activities/vr-workshop.jpg",
+        summary: {
+            ja: "VRを初めて体験する学生向けに、基本的なVRの使い方や楽しみ方を紹介する講座を開催しました。多くの新入生が参加し、メタバースの魅力を体験しました。",
+            en: "We held a workshop for students experiencing VR for the first time, introducing basic VR usage and enjoyment methods. Many new students participated and experienced the appeal of the metaverse.",
+            zh: "我们为首次体验VR的学生举办了讲座，介绍了VR的基本使用方法和乐趣。许多新生参加并体验了元宇宙的魅力。",
+        },
+        category: "workshop",
+        featured: false,
+    },
+    {
+        slug: "3d-modeling-challenge",
+        title: {
+            ja: "3Dモデリングチャレンジ",
+            en: "3D Modeling Challenge",
+            zh: "3D建模挑战",
+        },
+        date: "2023-08-10",
+        image: "/assets/activities/3d-modeling.jpg",
+        summary: {
+            ja: "サークル内で3Dモデリングコンテストを開催し、メンバーがオリジナルのアバターやオブジェクトを制作しました。優秀作品はサークルのバーチャル部室に展示されています。",
+            en: "We held a 3D modeling contest within the circle, where members created original avatars and objects. Excellent works are displayed in the circle's virtual club room.",
+            zh: "我们在社团内举办了3D建模比赛，成员们创作了原创头像和物体。优秀作品展示在社团的虚拟部室中。",
+        },
+        category: "contest",
+        featured: false,
+    },
+    {
+        slug: "metaverse-symposium",
+        title: {
+            ja: "メタバース教育シンポジウム",
+            en: "Metaverse Education Symposium",
+            zh: "元宇宙教育研讨会",
+        },
+        date: "2023-07-22",
+        image: "/assets/activities/symposium.jpg",
+        summary: {
+            ja: "教育分野でのメタバースの可能性について議論するシンポジウムを開催しました。大学教授や企業の方々をゲストに迎え、将来の教育とテクノロジーについて意見交換を行いました。",
+            en: "We held a symposium to discuss the potential of the metaverse in education. We welcomed university professors and company representatives as guests and exchanged opinions on the future of education and technology.",
+            zh: "我们举办了一场研讨会，讨论元宇宙在教育领域的潜力。我们邀请了大学教授和企业代表作为嘉宾，就未来的教育和技术交换了意见。",
+        },
+        category: "academic",
+        featured: true,
+    },
+];
+
+const categories = [
+    { id: "all", name: { ja: "すべて", en: "All", zh: "全部" } },
+    { id: "event", name: { ja: "イベント", en: "Events", zh: "活动" } },
+    { id: "workshop", name: { ja: "ワークショップ", en: "Workshops", zh: "工作坊" } },
+    { id: "creation", name: { ja: "創作", en: "Creations", zh: "创作" } },
+    { id: "contest", name: { ja: "コンテスト", en: "Contests", zh: "比赛" } },
+    { id: "academic", name: { ja: "学術", en: "Academic", zh: "学术" } },
+];
+---
+
+<Layout
+    title={t({
+        ja: "活動紹介",
+        en: "Activities",
+        zh: "活动介绍",
+    })}
+    description={t({
+        ja: "OUS Metaverseの活動内容をご紹介します。メタバース空間を活用したイベントやワークショップなど、さまざまな活動を行っています。",
+        en: "Introduction to OUS Metaverse activities. We conduct various activities such as events and workshops utilizing metaverse spaces.",
+        zh: "介绍OUS Metaverse的活动内容。我们开展各种活动，如利用元宇宙空间的活动和工作坊。",
+    })}
+>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
+                    {
+                        t({
+                            ja: "活動紹介",
+                            en: "Our Activities",
+                            zh: "活动介绍",
+                        })
+                    }
+                </h1>
+                <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
+                    {
+                        t({
+                            ja: "OUS Metaverseでは、メタバース空間を活用したさまざまな活動を行っています。イベントやワークショップ、創作活動など、メンバーそれぞれが興味のある分野で活躍しています。",
+                            en: "At OUS Metaverse, we conduct various activities utilizing metaverse spaces. Each member is active in their areas of interest, such as events, workshops, and creative activities.",
+                            zh: "在OUS Metaverse，我们开展各种利用元宇宙空间的活动。每个成员都在自己感兴趣的领域活跃，如活动、工作坊和创作活动等。",
+                        })
+                    }
+                </p>
+            </div>
+        </section>
+
+        <!-- Activities Filter and List -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <!-- Category Filter -->
+                <div class="mb-12 flex flex-wrap justify-center gap-2">
+                    {
+                        categories.map((category) => (
+                            <button
+                                class="category-filter rounded-full border border-gray-200 bg-white px-6 py-2 text-sm font-medium text-gray-700 transition hover:border-[#6CB16E] hover:text-[#6CB16E] data-[active=true]:border-[#6CB16E] data-[active=true]:bg-[#6CB16E]/10 data-[active=true]:text-[#6CB16E]"
+                                data-category={category.id}
+                                data-active={category.id === "all" ? "true" : "false"}
+                            >
+                                {t(category.name)}
+                            </button>
+                        ))
+                    }
+                </div>
+
+                <!-- Featured Activities -->
+                <div class="mb-16">
+                    <h2 class="mb-8 text-2xl font-bold text-gray-800">
+                        {
+                            t({
+                                ja: "注目の活動",
+                                en: "Featured Activities",
+                                zh: "精选活动",
+                            })
+                        }
+                    </h2>
+
+                    <div class="grid gap-8 lg:grid-cols-2">
+                        {
+                            activities
+                                .filter((activity) => activity.featured)
+                                .slice(0, 2)
+                                .map((activity) => (
+                                    <a
+                                        href={l(`/activities/${activity.slug}`)}
+                                        class="group overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-xl"
+                                        data-category={activity.category}
+                                    >
+                                        <div class="aspect-h-9 aspect-w-16 overflow-hidden">
+                                            <img
+                                                src={activity.image}
+                                                alt={t(activity.title)}
+                                                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            />
+                                        </div>
+                                        <div class="p-6">
+                                            <div class="mb-3 flex items-center justify-between">
+                                                <span class="inline-block rounded-full bg-[#6CB16E]/10 px-3 py-1 text-xs font-medium text-[#6CB16E]">
+                                                    {t(
+                                                        categories.find(
+                                                            (cat) => cat.id === activity.category,
+                                                        )?.name || { ja: "", en: "", zh: "" },
+                                                    )}
+                                                </span>
+                                                <span class="text-sm text-gray-500">
+                                                    {new Date(activity.date).toLocaleDateString(
+                                                        Astro.currentLocale || "ja-JP",
+                                                        {
+                                                            year: "numeric",
+                                                            month: "long",
+                                                            day: "numeric",
+                                                        },
+                                                    )}
+                                                </span>
+                                            </div>
+                                            <h3 class="mb-3 text-xl font-bold text-gray-800 group-hover:text-[#6CB16E]">
+                                                {t(activity.title)}
+                                            </h3>
+                                            <p class="mb-4 text-gray-600">{t(activity.summary)}</p>
+                                            <div class="flex items-center text-[#6CB16E]">
+                                                <span class="text-sm font-medium">
+                                                    {t({
+                                                        ja: "詳細を見る",
+                                                        en: "Read More",
+                                                        zh: "阅读更多",
+                                                    })}
+                                                </span>
+                                                <Icon
+                                                    name="material-symbols:arrow-right-alt"
+                                                    class="ml-2 h-4 w-4"
+                                                />
+                                            </div>
+                                        </div>
+                                    </a>
+                                ))
+                        }
+                    </div>
+                </div>
+
+                <!-- All Activities -->
+                <h2 class="mb-8 text-2xl font-bold text-gray-800">
+                    {
+                        t({
+                            ja: "すべての活動",
+                            en: "All Activities",
+                            zh: "所有活动",
+                        })
+                    }
+                </h2>
+
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="activities-grid">
+                    {
+                        activities.map((activity) => (
+                            <a
+                                href={l(`/activities/${activity.slug}`)}
+                                class="activity-card group overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-lg"
+                                data-category={activity.category}
+                            >
+                                <div class="aspect-h-9 aspect-w-16 overflow-hidden">
+                                    <img
+                                        src={activity.image}
+                                        alt={t(activity.title)}
+                                        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                </div>
+                                <div class="p-6">
+                                    <div class="mb-3 flex items-center justify-between">
+                                        <span class="inline-block rounded-full bg-[#6CB16E]/10 px-3 py-1 text-xs font-medium text-[#6CB16E]">
+                                            {t(
+                                                categories.find(
+                                                    (cat) => cat.id === activity.category,
+                                                )?.name || { ja: "", en: "", zh: "" },
+                                            )}
+                                        </span>
+                                        <span class="text-sm text-gray-500">
+                                            {new Date(activity.date).toLocaleDateString(
+                                                Astro.currentLocale || "ja-JP",
+                                                { year: "numeric", month: "long", day: "numeric" },
+                                            )}
+                                        </span>
+                                    </div>
+                                    <h3 class="mb-2 text-lg font-bold text-gray-800 group-hover:text-[#6CB16E]">
+                                        {t(activity.title)}
+                                    </h3>
+                                    <p class="line-clamp-2 text-sm text-gray-600">
+                                        {t(activity.summary)}
+                                    </p>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    // Category filtering functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".category-filter");
+        const activityCards = document.querySelectorAll(".activity-card");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                // Update active state on buttons
+                filterButtons.forEach((btn) => btn.setAttribute("data-active", "false"));
+                button.setAttribute("data-active", "true");
+
+                const selectedCategory = button.getAttribute("data-category");
+
+                // Filter the activities
+                activityCards.forEach((card) => {
+                    const cardCategory = card.getAttribute("data-category");
+                    if (selectedCategory === "all" || selectedCategory === cardCategory) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>

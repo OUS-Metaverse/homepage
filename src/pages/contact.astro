@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../libs/i18n";
+
+const { t } = useTranslations(Astro.url);
+
+// フォームの送信処理
+const errors = { name: "", email: "", message: "" };
+let success = false;
+
+if (Astro.request.method === "POST") {
+    try {
+        const data = await Astro.request.formData();
+        const name = data.get("name");
+        const email = data.get("email");
+        const message = data.get("message");
+
+        // バリデーション
+        let hasErrors = false;
+
+        if (!name || name.toString().trim() === "") {
+            errors.name = t({
+                ja: "名前は必須です",
+                en: "Name is required",
+                zh: "姓名为必填项",
+            });
+            hasErrors = true;
+        }
+
+        if (!email || !/^\S+@\S+\.\S+$/.test(email.toString())) {
+            errors.email = t({
+                ja: "有効なメールアドレスを入力してください",
+                en: "Please enter a valid email address",
+                zh: "请输入有效的电子邮件地址",
+            });
+            hasErrors = true;
+        }
+
+        if (!message || message.toString().trim() === "") {
+            errors.message = t({
+                ja: "メッセージは必須です",
+                en: "Message is required",
+                zh: "消息为必填项",
+            });
+            hasErrors = true;
+        }
+
+        if (!hasErrors) {
+            // ここでメール送信処理とDiscord通知処理を実装
+            // Resend API 呼び出し例
+            // const resendResponse = await resend.emails.send({
+            //   from: 'OUS Metaverse <contact@ous-metaverse.pages.dev>',
+            //   to: 'recipient@example.com',
+            //   subject: `お問い合わせ: ${name}様より`,
+            //   text: `名前: ${name}\nメール: ${email}\n\n${message}`,
+            // });
+
+            // Discord webhook 呼び出し例
+            // const webhookUrl = import.meta.env.DISCORD_WEBHOOK_URL;
+            // await fetch(webhookUrl, {
+            //   method: 'POST',
+            //   headers: { 'Content-Type': 'application/json' },
+            //   body: JSON.stringify({
+            //     content: `**新しいお問い合わせ**\n名前: ${name}\nメール: ${email}\n\n${message}`
+            //   })
+            // });
+
+            success = true;
+        }
+    } catch (error) {
+        console.error("Form submission error:", error);
+    }
+}
+---
+
+<Layout
+    title={t({
+        ja: "お問い合わせ",
+        en: "Contact Us",
+        zh: "联系我们",
+    })}
+    openGraph={{
+        basic: {
+            type: "website",
+        },
+    }}
+>
+    <div class="mx-auto max-w-4xl px-4 py-16">
+        <h1 class="mb-8 text-center text-3xl font-bold text-gray-800 md:text-4xl">
+            {
+                t({
+                    ja: "お問い合わせ",
+                    en: "Contact Us",
+                    zh: "联系我们",
+                })
+            }
+        </h1>
+
+        <p class="mx-auto mb-8 max-w-2xl text-center text-gray-600">
+            {
+                t({
+                    ja: "OUS Metaverseに関するご質問やお問い合わせは、以下のフォームからお気軽にご連絡ください。",
+                    en: "If you have any questions or inquiries about OUS Metaverse, please feel free to contact us using the form below.",
+                    zh: "如果您有关于OUS Metaverse的问题或咨询，请随时通过以下表格与我们联系。",
+                })
+            }
+        </p>
+
+        {
+            success ? (
+                <div class="rounded-lg bg-green-50 p-6 text-center">
+                    <h2 class="mb-4 text-xl font-semibold text-green-800">
+                        {t({
+                            ja: "お問い合わせありがとうございました",
+                            en: "Thank you for your inquiry",
+                            zh: "感谢您的咨询",
+                        })}
+                    </h2>
+                    <p class="text-green-700">
+                        {t({
+                            ja: "メッセージを受け付けました。近日中にご返信いたします。",
+                            en: "We have received your message. We will reply to you soon.",
+                            zh: "我们已收到您的消息。我们将尽快回复您。",
+                        })}
+                    </p>
+                </div>
+            ) : (
+                <form method="POST" class="space-y-6 rounded-lg bg-white p-8 shadow-md">
+                    <div>
+                        <label for="name" class="mb-2 block text-sm font-medium text-gray-700">
+                            {t({
+                                ja: "お名前",
+                                en: "Name",
+                                zh: "姓名",
+                            })}
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class:list={[
+                                "mt-1 block w-full rounded-md border p-3 shadow-sm focus:border-[#6CB16E] focus:ring-[#6CB16E] focus:outline-none",
+                                { "border-red-500": errors.name },
+                            ]}
+                        />
+                        {errors.name && <p class="mt-1 text-sm text-red-500">{errors.name}</p>}
+                    </div>
+
+                    <div>
+                        <label for="email" class="mb-2 block text-sm font-medium text-gray-700">
+                            {t({
+                                ja: "メールアドレス",
+                                en: "Email",
+                                zh: "电子邮件",
+                            })}
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class:list={[
+                                "mt-1 block w-full rounded-md border p-3 shadow-sm focus:border-[#6CB16E] focus:ring-[#6CB16E] focus:outline-none",
+                                { "border-red-500": errors.email },
+                            ]}
+                        />
+                        {errors.email && <p class="mt-1 text-sm text-red-500">{errors.email}</p>}
+                    </div>
+
+                    <div>
+                        <label for="message" class="mb-2 block text-sm font-medium text-gray-700">
+                            {t({
+                                ja: "メッセージ",
+                                en: "Message",
+                                zh: "消息",
+                            })}
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            class:list={[
+                                "mt-1 block w-full rounded-md border p-3 shadow-sm focus:border-[#6CB16E] focus:ring-[#6CB16E] focus:outline-none",
+                                { "border-red-500": errors.message },
+                            ]}
+                        />
+                        {errors.message && (
+                            <p class="mt-1 text-sm text-red-500">{errors.message}</p>
+                        )}
+                    </div>
+
+                    <div>
+                        <button
+                            type="submit"
+                            class="w-full rounded-md bg-[#6CB16E] py-3 text-white transition hover:bg-[#5a9a5c] focus:ring-2 focus:ring-[#6CB16E] focus:ring-offset-2 focus:outline-none"
+                        >
+                            {t({
+                                ja: "送信する",
+                                en: "Submit",
+                                zh: "提交",
+                            })}
+                        </button>
+                    </div>
+                </form>
+            )
+        }
+    </div>
+</Layout>

@@ -1,0 +1,344 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../libs/i18n";
+
+const { t } = useTranslations(Astro.url);
+
+const rooms = [
+    {
+        platform: "VRChat",
+        name: "OUS Metaverse Room",
+        image: "/assets/room/vrchat.jpg",
+        url: "https://vrchat.com/home/world/wrld_00000000-0000-0000-0000-000000000000",
+        description: {
+            ja: "VRChatでの公式バーチャル部室です。メンバーのアバターやオリジナル作品を展示しています。",
+            en: "Our official virtual club room in VRChat. We display member avatars and original works.",
+            zh: "我们在VRChat的官方虚拟部室。展示成员头像和原创作品。",
+        },
+    },
+    {
+        platform: "Cluster",
+        name: "OUS Metaverse Hub",
+        image: "/assets/room/cluster.jpg",
+        url: "https://cluster.mu/w/00000000-0000-0000-0000-000000000000",
+        description: {
+            ja: "Clusterでの公式ハブです。定例ミーティングやイベントの開催にも使用しています。",
+            en: "Our official hub in Cluster. Also used for regular meetings and events.",
+            zh: "我们在Cluster的官方中心。也用于定期会议和活动。",
+        },
+    },
+];
+---
+
+<Layout
+    title={t({
+        ja: "バーチャル部室",
+        en: "Virtual Club Room",
+        zh: "虚拟部室",
+    })}
+    description={t({
+        ja: "OUS Metaverseのバーチャル部室へようこそ。VRChatやClusterでお気軽に遊びに来てください。",
+        en: "Welcome to the OUS Metaverse virtual club room. Feel free to visit us on VRChat and Cluster.",
+        zh: "欢迎来到OUS Metaverse虚拟部室。请随时在VRChat和Cluster上访问我们。",
+    })}
+>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
+                    {
+                        t({
+                            ja: "バーチャル部室",
+                            en: "Virtual Club Room",
+                            zh: "虚拟部室",
+                        })
+                    }
+                </h1>
+                <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
+                    {
+                        t({
+                            ja: "OUS Metaverseのバーチャル空間にアクセスして、メンバーと交流しましょう。",
+                            en: "Access the OUS Metaverse virtual space and interact with our members.",
+                            zh: "访问OUS Metaverse虚拟空间，与我们的成员互动。",
+                        })
+                    }
+                </p>
+            </div>
+        </section>
+
+        <!-- Virtual Rooms -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid gap-12 md:grid-cols-2">
+                    {
+                        rooms.map((room) => (
+                            <div class="overflow-hidden rounded-lg bg-white shadow-lg transition hover:shadow-xl">
+                                <div class="aspect-w-16 aspect-h-9">
+                                    <img
+                                        src={room.image}
+                                        alt={room.name}
+                                        class="h-full w-full object-cover"
+                                    />
+                                </div>
+                                <div class="p-6">
+                                    <div class="mb-3 inline-block rounded-md bg-gray-100 px-3 py-1 text-sm text-gray-700">
+                                        {room.platform}
+                                    </div>
+                                    <h2 class="mb-3 text-2xl font-bold text-gray-800">
+                                        {room.name}
+                                    </h2>
+                                    <p class="mb-6 text-gray-600">{t(room.description)}</p>
+                                    <a
+                                        href={room.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center rounded-md bg-[#6CB16E] px-6 py-3 text-white transition hover:bg-[#5a9a5c]"
+                                    >
+                                        {t({
+                                            ja: "訪問する",
+                                            en: "Visit",
+                                            zh: "访问",
+                                        })}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="ml-2 h-5 w-5"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Join -->
+        <section class="bg-gray-50 py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-12 text-center text-3xl font-bold text-gray-800">
+                    {
+                        t({
+                            ja: "バーチャル部室の利用方法",
+                            en: "How to Use Our Virtual Club Room",
+                            zh: "如何使用我们的虚拟部室",
+                        })
+                    }
+                </h2>
+
+                <div class="mx-auto max-w-4xl">
+                    <div class="grid gap-8 md:grid-cols-3">
+                        <!-- Step 1 -->
+                        <div class="rounded-lg bg-white p-6 shadow-md">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6CB16E] text-white"
+                            >
+                                <span class="text-xl font-bold">1</span>
+                            </div>
+                            <h3 class="mb-3 text-xl font-semibold text-gray-800">
+                                {
+                                    t({
+                                        ja: "アカウント作成",
+                                        en: "Create Account",
+                                        zh: "创建账号",
+                                    })
+                                }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    t({
+                                        ja: "VRChatやClusterのアカウントを作成します。PC版またはVR対応HMDでご利用いただけます。",
+                                        en: "Create a VRChat or Cluster account. Available on PC or VR-compatible HMDs.",
+                                        zh: "创建VRChat或Cluster账号。可在PC或VR兼容头显上使用。",
+                                    })
+                                }
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="rounded-lg bg-white p-6 shadow-md">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6CB16E] text-white"
+                            >
+                                <span class="text-xl font-bold">2</span>
+                            </div>
+                            <h3 class="mb-3 text-xl font-semibold text-gray-800">
+                                {
+                                    t({
+                                        ja: "ワールドURLにアクセス",
+                                        en: "Access World URL",
+                                        zh: "访问世界URL",
+                                    })
+                                }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    t({
+                                        ja: "上記のURLからバーチャル部室にアクセスします。ブラウザからURLをクリックするか、アプリ内で検索してください。",
+                                        en: "Access the virtual club room from the URLs above. Either click the URL from your browser or search within the app.",
+                                        zh: "通过上面的URL访问虚拟部室。从浏览器点击URL或在应用内搜索。",
+                                    })
+                                }
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="rounded-lg bg-white p-6 shadow-md">
+                            <div
+                                class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6CB16E] text-white"
+                            >
+                                <span class="text-xl font-bold">3</span>
+                            </div>
+                            <h3 class="mb-3 text-xl font-semibold text-gray-800">
+                                {
+                                    t({
+                                        ja: "交流を楽しむ",
+                                        en: "Enjoy Interaction",
+                                        zh: "享受互动",
+                                    })
+                                }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    t({
+                                        ja: "バーチャル部室でメンバーと交流を楽しみましょう。週末の夜に定期的にイベントも開催しています。",
+                                        en: "Enjoy interacting with members in the virtual club room. We also regularly hold events on weekend evenings.",
+                                        zh: "在虚拟部室中享受与成员的互动。我们也在周末晚上定期举办活动。",
+                                    })
+                                }
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 text-center">
+                        <p class="mb-6 text-lg text-gray-600">
+                            {
+                                t({
+                                    ja: "質問や困ったことがあれば、いつでもDiscordでお気軽にお問い合わせください。",
+                                    en: "If you have any questions or concerns, feel free to contact us on Discord anytime.",
+                                    zh: "如果您有任何问题或疑虑，随时可以在Discord上与我们联系。",
+                                })
+                            }
+                        </p>
+                        <a
+                            href="https://discord.gg/ousmetaverse"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center rounded-md bg-[#5865F2] px-6 py-3 text-white transition hover:bg-[#4752C4]"
+                        >
+                            <svg
+                                class="mr-2 h-5 w-5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"
+                                ></path>
+                            </svg>
+                            Discord
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guidelines -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-8 text-center text-3xl font-bold text-gray-800">
+                    {
+                        t({
+                            ja: "バーチャル部室ガイドライン",
+                            en: "Virtual Club Room Guidelines",
+                            zh: "虚拟部室指南",
+                        })
+                    }
+                </h2>
+
+                <div class="mx-auto max-w-3xl space-y-8">
+                    <div class="rounded-lg bg-white p-6 shadow-md">
+                        <h3 class="mb-3 text-xl font-semibold text-gray-800">
+                            {
+                                t({
+                                    ja: "行動規範",
+                                    en: "Code of Conduct",
+                                    zh: "行为准则",
+                                })
+                            }
+                        </h3>
+                        <ul class="list-inside list-disc space-y-2 text-gray-600">
+                            <li>
+                                {
+                                    t({
+                                        ja: "他のユーザーに対して敬意を持って接してください。",
+                                        en: "Treat other users with respect.",
+                                        zh: "对其他用户保持尊重。",
+                                    })
+                                }
+                            </li>
+                            <li>
+                                {
+                                    t({
+                                        ja: "ハラスメント、差別的言動は禁止です。",
+                                        en: "Harassment and discriminatory behavior are prohibited.",
+                                        zh: "禁止骚扰和歧视行为。",
+                                    })
+                                }
+                            </li>
+                            <li>
+                                {
+                                    t({
+                                        ja: "バーチャル部室内での過度な政治的・宗教的議論は避けてください。",
+                                        en: "Avoid excessive political or religious discussions in the virtual club room.",
+                                        zh: "避免在虚拟部室内进行过度的政治或宗教讨论。",
+                                    })
+                                }
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-lg bg-white p-6 shadow-md">
+                        <h3 class="mb-3 text-xl font-semibold text-gray-800">
+                            {
+                                t({
+                                    ja: "注意事項",
+                                    en: "Precautions",
+                                    zh: "注意事项",
+                                })
+                            }
+                        </h3>
+                        <ul class="list-inside list-disc space-y-2 text-gray-600">
+                            <li>
+                                {
+                                    t({
+                                        ja: "長時間のVR利用は体調不良の原因になることがあります。適度な休憩を取りましょう。",
+                                        en: "Extended use of VR may cause physical discomfort. Take regular breaks.",
+                                        zh: "长时间使用VR可能导致身体不适。请定期休息。",
+                                    })
+                                }
+                            </li>
+                            <li>
+                                {
+                                    t({
+                                        ja: "バーチャル部室での会話は録音・録画される場合があります。プライバシーに注意してください。",
+                                        en: "Conversations in the virtual club room may be recorded. Please be mindful of your privacy.",
+                                        zh: "虚拟部室中的对话可能被录音或录像。请注意您的隐私。",
+                                    })
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

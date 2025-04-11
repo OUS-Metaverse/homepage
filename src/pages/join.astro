@@ -1,0 +1,373 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../libs/i18n";
+
+const { t, l } = useTranslations(Astro.url);
+
+const faqs = [
+    {
+        question: {
+            ja: "入会に費用はかかりますか？",
+            en: "Is there a fee to join?",
+            zh: "加入需要费用吗？",
+        },
+        answer: {
+            ja: "年会費として500円をいただいております。この費用はサーバー維持費やイベント運営費として使用されます。",
+            en: "There is an annual fee of 500 yen. This fee is used for server maintenance and event operation costs.",
+            zh: "我们收取500日元的年费。这笔费用用于服务器维护和活动运营成本。",
+        },
+    },
+    {
+        question: {
+            ja: "VRデバイスは必要ですか？",
+            en: "Do I need a VR device?",
+            zh: "我需要VR设备吗？",
+        },
+        answer: {
+            ja: "いいえ、必須ではありません。PC版のVRChatやClusterを使って参加することも可能です。もちろん、VRデバイスをお持ちの方はより没入感のある体験ができます。",
+            en: "No, it's not necessary. You can also participate using the PC version of VRChat or Cluster. Of course, if you have a VR device, you can have a more immersive experience.",
+            zh: "不，这不是必需的。您也可以使用PC版的VRChat或Cluster参加。当然，如果您拥有VR设备，可以获得更身临其境的体验。",
+        },
+    },
+    {
+        question: {
+            ja: "活動頻度はどのくらいですか？",
+            en: "How often are the activities?",
+            zh: "活动频率是多少？",
+        },
+        answer: {
+            ja: "毎週水曜日に定例ミーティングを行っています。その他、月に1〜2回程度のイベントや勉強会を開催しています。参加は強制ではありませんので、自分のペースで活動できます。",
+            en: "We hold regular meetings every Wednesday. We also organize events and study sessions about 1-2 times a month. Participation is not mandatory, so you can participate at your own pace.",
+            zh: "我们每周三举行定期会议。我们还每月组织1-2次活动和学习会。参与不是强制性的，所以您可以按照自己的节奏参与。",
+        },
+    },
+    {
+        question: {
+            ja: "初心者でも大丈夫ですか？",
+            en: "Is it okay if I'm a beginner?",
+            zh: "初学者可以吗？",
+        },
+        answer: {
+            ja: "もちろんです！メンバーの多くは最初は初心者でした。基本的な使い方から丁寧に教えますので、安心して参加してください。",
+            en: "Of course! Many of our members were beginners at first. We'll teach you the basic usage carefully, so please join with confidence.",
+            zh: "当然可以！我们的许多成员一开始都是初学者。我们会仔细教您基本用法，所以请放心加入。",
+        },
+    },
+];
+---
+
+<Layout
+    title={t({
+        ja: "サークルへの参加方法",
+        en: "How to Join",
+        zh: "如何加入",
+    })}
+    description={t({
+        ja: "OUS Metaverseへの参加方法をご案内します。岡山理科大学の学生ならどなたでも参加できます。",
+        en: "Learn how to join OUS Metaverse. Any student from Okayama University of Science can join.",
+        zh: "了解如何加入OUS Metaverse。冈山理科大学的任何学生都可以加入。",
+    })}
+>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
+                    {
+                        t({
+                            ja: "サークルへの参加方法",
+                            en: "How to Join Our Circle",
+                            zh: "如何加入我们的社团",
+                        })
+                    }
+                </h1>
+                <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
+                    {
+                        t({
+                            ja: "OUS Metaverseでは、メタバースに興味のある岡山理科大学の学生を随時募集しています。",
+                            en: "OUS Metaverse is always recruiting students from Okayama University of Science who are interested in the metaverse.",
+                            zh: "OUS Metaverse一直在招募对元宇宙感兴趣的冈山理科大学学生。",
+                        })
+                    }
+                </p>
+            </div>
+        </section>
+
+        <!-- Join Process -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-12 text-center text-3xl font-bold text-gray-800">
+                    {
+                        t({
+                            ja: "入会の流れ",
+                            en: "Joining Process",
+                            zh: "加入流程",
+                        })
+                    }
+                </h2>
+
+                <div class="mx-auto max-w-4xl">
+                    <div class="relative">
+                        <!-- Process Step Line -->
+                        <div
+                            class="absolute left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-[#6CB16E] md:left-[70px]"
+                        >
+                        </div>
+
+                        <!-- Steps -->
+                        <div class="space-y-12">
+                            <!-- Step 1 -->
+                            <div class="relative">
+                                <div class="flex flex-col md:flex-row">
+                                    <!-- Number Circle -->
+                                    <div
+                                        class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#6CB16E] text-white md:mx-0 md:mb-0"
+                                    >
+                                        <span class="text-xl font-bold">1</span>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="md:ml-12">
+                                        <h3 class="mb-3 text-xl font-bold text-gray-800">
+                                            {
+                                                t({
+                                                    ja: "Discordサーバーに参加",
+                                                    en: "Join our Discord Server",
+                                                    zh: "加入我们的Discord服务器",
+                                                })
+                                            }
+                                        </h3>
+                                        <p class="mb-4 text-gray-600">
+                                            {
+                                                t({
+                                                    ja: "OUS MetaverseのDiscordサーバーに参加してください。サーバーはメンバー同士のコミュニケーションや最新情報の共有に使用しています。",
+                                                    en: "Please join the OUS Metaverse Discord server. The server is used for communication between members and sharing the latest information.",
+                                                    zh: "请加入OUS Metaverse Discord服务器。该服务器用于成员之间的交流和分享最新信息。",
+                                                })
+                                            }
+                                        </p>
+                                        <a
+                                            href="https://discord.gg/ousmetaverse"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center rounded-md bg-[#5865F2] px-6 py-3 text-white transition hover:bg-[#4752C4]"
+                                        >
+                                            <svg
+                                                class="mr-2 h-5 w-5"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"
+                                                ></path>
+                                            </svg>
+                                            Discord
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="relative">
+                                <div class="flex flex-col md:flex-row">
+                                    <!-- Number Circle -->
+                                    <div
+                                        class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#6CB16E] text-white md:mx-0 md:mb-0"
+                                    >
+                                        <span class="text-xl font-bold">2</span>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="md:ml-12">
+                                        <h3 class="mb-3 text-xl font-bold text-gray-800">
+                                            {
+                                                t({
+                                                    ja: "エントリーフォームに記入",
+                                                    en: "Fill out the Entry Form",
+                                                    zh: "填写报名表",
+                                                })
+                                            }
+                                        </h3>
+                                        <p class="mb-4 text-gray-600">
+                                            {
+                                                t({
+                                                    ja: "基本情報を入力するエントリーフォームに記入してください。学生証番号、氏名、学部、連絡先などの情報が必要です。",
+                                                    en: "Please fill out the entry form with your basic information. Information such as student ID number, name, faculty, and contact information is required.",
+                                                    zh: "请填写包含您基本信息的报名表。需要提供学生证号码、姓名、学院和联系信息等资料。",
+                                                })
+                                            }
+                                        </p>
+                                        <a
+                                            href="https://forms.gle/example"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center rounded-md bg-[#6CB16E] px-6 py-3 text-white transition hover:bg-[#5a9a5c]"
+                                        >
+                                            <svg
+                                                class="mr-2 h-5 w-5"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                                                ></path>
+                                            </svg>
+                                            {
+                                                t({
+                                                    ja: "エントリーフォーム",
+                                                    en: "Entry Form",
+                                                    zh: "报名表",
+                                                })
+                                            }
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="relative">
+                                <div class="flex flex-col md:flex-row">
+                                    <!-- Number Circle -->
+                                    <div
+                                        class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#6CB16E] text-white md:mx-0 md:mb-0"
+                                    >
+                                        <span class="text-xl font-bold">3</span>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="md:ml-12">
+                                        <h3 class="mb-3 text-xl font-bold text-gray-800">
+                                            {
+                                                t({
+                                                    ja: "オリエンテーションに参加",
+                                                    en: "Attend Orientation",
+                                                    zh: "参加入门介绍会",
+                                                })
+                                            }
+                                        </h3>
+                                        <p class="mb-4 text-gray-600">
+                                            {
+                                                t({
+                                                    ja: "新メンバー向けのオリエンテーションに参加してください。サークルの活動内容や使用ツールについて説明します。オリエンテーションはリアルとバーチャルの両方で開催しています。",
+                                                    en: "Please attend the orientation for new members. We will explain the circle's activities and the tools we use. Orientations are held both in-person and virtually.",
+                                                    zh: "请参加为新成员举办的入门介绍会。我们将介绍社团活动内容和使用的工具。入门介绍会以线下和虚拟两种方式举行。",
+                                                })
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="relative">
+                                <div class="flex flex-col md:flex-row">
+                                    <!-- Number Circle -->
+                                    <div
+                                        class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#6CB16E] text-white md:mx-0 md:mb-0"
+                                    >
+                                        <span class="text-xl font-bold">4</span>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="md:ml-12">
+                                        <h3 class="mb-3 text-xl font-bold text-gray-800">
+                                            {
+                                                t({
+                                                    ja: "会費の支払い",
+                                                    en: "Pay Membership Fee",
+                                                    zh: "支付会费",
+                                                })
+                                            }
+                                        </h3>
+                                        <p class="mb-4 text-gray-600">
+                                            {
+                                                t({
+                                                    ja: "年会費500円をお支払いください。会費はサーバー維持費やイベント運営費に充てられます。支払い方法は、オリエンテーション時にご案内します。",
+                                                    en: "Please pay the annual membership fee of 500 yen. The fee is used for server maintenance and event operation costs. Payment methods will be explained during the orientation.",
+                                                    zh: "请支付500日元的年费。会费用于服务器维护和活动运营成本。付款方式将在入门介绍会上说明。",
+                                                })
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 rounded-lg bg-[#6CB16E]/10 p-8 text-center">
+                        <h3 class="mb-4 text-2xl font-bold text-gray-800">
+                            {
+                                t({
+                                    ja: "入会についてのお問い合わせ",
+                                    en: "Inquiries about Joining",
+                                    zh: "关于加入的咨询",
+                                })
+                            }
+                        </h3>
+                        <p class="mb-6 text-gray-600">
+                            {
+                                t({
+                                    ja: "入会について質問がある場合や、手続きに不安がある場合は、お気軽にお問い合わせください。",
+                                    en: "If you have questions about joining or are uncertain about the procedure, please feel free to contact us.",
+                                    zh: "如果您对加入有任何问题或对手续有不确定之处，请随时联系我们。",
+                                })
+                            }
+                        </p>
+                        <a
+                            href={l("/contact")}
+                            class="inline-flex items-center rounded-md bg-[#6CB16E] px-6 py-3 text-white transition hover:bg-[#5a9a5c]"
+                        >
+                            {
+                                t({
+                                    ja: "お問い合わせ",
+                                    en: "Contact Us",
+                                    zh: "联系我们",
+                                })
+                            }
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="ml-2 h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                                ></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-gray-50 py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-12 text-center text-3xl font-bold text-gray-800">
+                    {
+                        t({
+                            ja: "よくある質問",
+                            en: "Frequently Asked Questions",
+                            zh: "常见问题",
+                        })
+                    }
+                </h2>
+
+                <div class="mx-auto max-w-3xl divide-y divide-gray-200">
+                    {
+                        faqs.map((faq) => (
+                            <div class="py-6">
+                                <h3 class="mb-3 text-xl font-bold text-gray-800">
+                                    {t(faq.question)}
+                                </h3>
+                                <p class="text-gray-600">{t(faq.answer)}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -1,0 +1,82 @@
+{
+    "staffMembers": [
+        {
+            "id": "president",
+            "name": "佐藤健太",
+            "role": {
+                "ja": "代表",
+                "en": "President",
+                "zh": "代表"
+            },
+            "grade": {
+                "ja": "情報工学科 4年",
+                "en": "Information Engineering, 4th year",
+                "zh": "信息工程 4年级"
+            },
+            "avatar": "/assets/members/president.jpg",
+            "comment": {
+                "ja": "「メタバースをもっと身近に」をモットーに、メンバーと一緒に新しい可能性を探求しています。VRChatでのワールド制作が得意です。",
+                "en": "With the motto 'Making Metaverse More Accessible', I'm exploring new possibilities together with our members. I specialize in world creation in VRChat.",
+                "zh": "以\"让元宇宙更贴近生活\"为理念，我与成员们一起探索新的可能性。我擅长在VRChat中创建世界。"
+            },
+            "skills": ["Unity", "VRChat SDK", "Blender", "C#"],
+            "socials": [
+                { "name": "Twitter", "url": "https://twitter.com/example", "icon": "mdi:twitter" },
+                { "name": "GitHub", "url": "https://github.com/example", "icon": "mdi:github" }
+            ]
+        },
+        {
+            "id": "vice-president",
+            "name": "山田花子",
+            "role": {
+                "ja": "副代表",
+                "en": "Vice President",
+                "zh": "副代表"
+            },
+            "grade": {
+                "ja": "デザイン学科 3年",
+                "en": "Design, 3rd year",
+                "zh": "设计 3年级"
+            },
+            "avatar": "/assets/members/vice-president.jpg",
+            "comment": {
+                "ja": "3Dモデリングとテクスチャ制作を担当しています。メンバーが作るアバターやワールドのデザインサポートもしています。",
+                "en": "I'm in charge of 3D modeling and texture creation. I also support the design of avatars and worlds created by members.",
+                "zh": "我负责3D建模和纹理创建。我还支持成员创建的头像和世界的设计。"
+            },
+            "skills": ["Blender", "Photoshop", "Substance Painter", "VRoid Studio"],
+            "socials": [
+                { "name": "Twitter", "url": "https://twitter.com/example", "icon": "mdi:twitter" },
+                {
+                    "name": "ArtStation",
+                    "url": "https://artstation.com/example",
+                    "icon": "mdi:palette"
+                }
+            ]
+        }
+    ],
+    "regularMembers": [
+        {
+            "id": "member1",
+            "name": "田中誠",
+            "grade": {
+                "ja": "情報工学科 2年",
+                "en": "Information Engineering, 2nd year",
+                "zh": "信息工程 2年级"
+            },
+            "avatar": "/assets/members/member1.jpg",
+            "skills": ["Unity", "プログラミング"]
+        },
+        {
+            "id": "member2",
+            "name": "小林健太",
+            "grade": {
+                "ja": "メディア情報学科 1年",
+                "en": "Media Informatics, 1st year",
+                "zh": "媒体信息 1年级"
+            },
+            "avatar": "/assets/members/member2.jpg",
+            "skills": ["イラスト", "VRoid"]
+        }
+    ]
+}

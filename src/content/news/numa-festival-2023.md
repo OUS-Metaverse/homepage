@@ -1,0 +1,49 @@
+---
+title: "NUMA祭に出展しました"
+titleEn: "We Exhibited at NUMA Festival"
+titleZh: "我们在NUMA节上展出"
+date: "2023-10-10"
+cover: "/assets/news/numa-festival.jpg"
+summary: "10月に開催されたNUMA祭にて、OUS Metaverseの展示ブースを出展しました。"
+summaryEn: "We set up an exhibition booth for OUS Metaverse at the NUMA Festival held in October."
+summaryZh: "我们在10月举行的NUMA节上设立了OUS Metaverse的展览摊位。"
+category: "event"
+tags: ["NUMA祭", "展示会", "バーチャルキャンパス", "教育"]
+language: "ja"
+featured: true
+relatedLinks:
+    - title: "NUMA祭公式サイト"
+      titleEn: "NUMA Festival Official Site"
+      titleZh: "NUMA节官方网站"
+      url: "https://example.com/numa-festival"
+    - title: "バーチャルキャンパスプロジェクト"
+      titleEn: "Virtual Campus Project"
+      titleZh: "虚拟校园项目"
+      url: "https://example.com/virtual-campus"
+---
+
+# NUMA祭に出展しました
+
+2023年10月に開催された岡山理科大学のNUMA祭にて、OUS Metaverseは展示ブースを出展しました。今回の出展では、メタバース技術を用いたバーチャルキャンパスの制作プロジェクトや、VRを活用した学習環境についての展示を行いました。
+
+## 展示内容
+
+### バーチャルキャンパスプロジェクト
+
+VRChatを使用して制作した岡山理科大学のバーチャルキャンパスを展示しました。来場者はVRヘッドセットを装着し、実際のキャンパスとそっくりなバーチャル空間を歩き回ることができました。特に1号館の再現度の高さには多くの来場者から驚きの声が上がっていました。
+
+### メタバース学習支援システム
+
+メタバース空間を活用した学習支援システムのプロトタイプも展示しました。このシステムでは、3次元空間内で物理や化学の現象をインタラクティブに体験できるため、抽象的な概念も直感的に理解できるという特徴があります。教育関係者からも高い関心を寄せていただきました。
+
+## 来場者の反応
+
+2日間で約150名の方に体験いただき、特に学生からは「実際に自分でもVRワールドを作ってみたい」「メタバースが教育にこんな風に活用できるとは知らなかった」といった声が多く聞かれました。また、教職員の方々からも「今後の教育におけるメタバースの可能性」について積極的な質問やコメントをいただきました。
+
+## 今後の展開
+
+今回の展示会で得られたフィードバックをもとに、バーチャルキャンパスプロジェクトをさらに発展させていく予定です。特に、授業や研究発表など、実際の大学活動をメタバース空間で行えるような機能の充実を目指します。
+
+また、この経験を活かし、11月に予定されている「XR技術展示会」への出展も決定しています。
+
+OUS Metaverseでは、これからもメタバース技術の可能性を探求し、大学生活をより豊かにする取り組みを続けていきます。展示会にお越しいただいた皆様、ありがとうございました。

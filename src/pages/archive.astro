@@ -1,0 +1,306 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../libs/i18n";
+import { Icon } from "astro-icon/components";
+
+const { t, l } = useTranslations(Astro.url);
+
+// 実際の実装ではContent Collectionsを使用してデータを取得
+const archiveItems = [
+    {
+        year: "2023",
+        items: [
+            {
+                title: {
+                    ja: "バーチャル学園祭 2023",
+                    en: "Virtual School Festival 2023",
+                    zh: "2023虚拟校园节",
+                },
+                description: {
+                    ja: "2023年10月に開催したバーチャル学園祭の記録です。VRChatでの展示内容やイベントの様子をご覧いただけます。",
+                    en: "A record of the Virtual School Festival held in October 2023. You can see the exhibition content and event scenes in VRChat.",
+                    zh: "2023年10月举办的虚拟校园节的记录。您可以查看在VRChat中的展览内容和活动场景。",
+                },
+                date: "2023-10-15",
+                type: "event",
+                thumbnail: "/assets/archive/virtual-festival-2023.jpg",
+                link: "/archive/virtual-festival-2023",
+            },
+            {
+                title: {
+                    ja: "メタバース教育シンポジウム記録",
+                    en: "Metaverse Education Symposium Record",
+                    zh: "元宇宙教育研讨会记录",
+                },
+                description: {
+                    ja: "メタバースの教育利用について議論したシンポジウムの記録です。大学教授や企業の方々と共に議論しました。",
+                    en: "A record of a symposium discussing the educational use of the metaverse. We discussed with university professors and company representatives.",
+                    zh: "讨论元宇宙教育用途的研讨会记录。我们与大学教授和企业代表进行了讨论。",
+                },
+                date: "2023-07-22",
+                type: "document",
+                thumbnail: "/assets/archive/symposium-record.jpg",
+                link: "/archive/metaverse-education-symposium",
+            },
+            {
+                title: {
+                    ja: "3Dモデリングコンテスト作品集",
+                    en: "3D Modeling Contest Collection",
+                    zh: "3D建模比赛作品集",
+                },
+                description: {
+                    ja: "サークル内で開催した3Dモデリングコンテストの作品集です。メンバーそれぞれの個性が光る作品の数々をご覧ください。",
+                    en: "A collection of works from the 3D modeling contest held within the circle. Please see the various works that showcase the individuality of each member.",
+                    zh: "在社团内举办的3D建模比赛的作品集。请欣赏展示每个成员个性的各种作品。",
+                },
+                date: "2023-08-10",
+                type: "gallery",
+                thumbnail: "/assets/archive/3d-contest.jpg",
+                link: "/archive/3d-modeling-contest-2023",
+            },
+            {
+                title: {
+                    ja: "VR初心者向けワークショップ教材",
+                    en: "Workshop Materials for VR Beginners",
+                    zh: "面向VR初学者的工作坊教材",
+                },
+                description: {
+                    ja: "VR初心者向けに作成したワークショップの教材です。VRの基本から応用までを学べるコンテンツを公開しています。",
+                    en: "Workshop materials created for VR beginners. We publish content that allows you to learn from VR basics to applications.",
+                    zh: "为VR初学者创建的工作坊教材。我们发布可以学习从VR基础到应用的内容。",
+                },
+                date: "2023-05-20",
+                type: "resource",
+                thumbnail: "/assets/archive/vr-workshop.jpg",
+                link: "/archive/vr-workshop-materials",
+            },
+        ],
+    },
+    {
+        year: "2022",
+        items: [
+            {
+                title: {
+                    ja: "メタバースサークル設立記念イベント",
+                    en: "Metaverse Circle Founding Commemorative Event",
+                    zh: "元宇宙社团成立纪念活动",
+                },
+                description: {
+                    ja: "OUS Metaverseが大学公認サークルとして認定された際の記念イベントの記録です。",
+                    en: "A record of the commemorative event when OUS Metaverse was recognized as an official university circle.",
+                    zh: "OUS Metaverse被认证为大学官方社团时的纪念活动记录。",
+                },
+                date: "2022-11-05",
+                type: "event",
+                thumbnail: "/assets/archive/founding-event.jpg",
+                link: "/archive/founding-event",
+            },
+            {
+                title: {
+                    ja: "バーチャルキャンパスプロジェクト Phase 1",
+                    en: "Virtual Campus Project Phase 1",
+                    zh: "虚拟校园项目第1阶段",
+                },
+                description: {
+                    ja: "岡山理科大学のバーチャルキャンパス制作プロジェクトの第1フェーズの成果物です。",
+                    en: "The deliverables of Phase 1 of the Okayama University of Science virtual campus production project.",
+                    zh: "冈山理科大学虚拟校园制作项目第1阶段的成果。",
+                },
+                date: "2022-08-20",
+                type: "project",
+                thumbnail: "/assets/archive/virtual-campus-phase1.jpg",
+                link: "/archive/virtual-campus-phase1",
+            },
+        ],
+    },
+    {
+        year: "2021",
+        items: [
+            {
+                title: {
+                    ja: "サークル設立趣意書",
+                    en: "Circle Establishment Prospectus",
+                    zh: "社团成立宗旨书",
+                },
+                description: {
+                    ja: "OUS Metaverseを設立した際の趣意書です。設立の経緯や目的、活動方針などをご覧いただけます。",
+                    en: "The prospectus at the time of establishing OUS Metaverse. You can see the background of the establishment, purpose, activity policy, etc.",
+                    zh: "成立OUS Metaverse时的宗旨书。您可以查看成立背景、目的、活动方针等。",
+                },
+                date: "2021-10-01",
+                type: "document",
+                thumbnail: "/assets/archive/establishment-document.jpg",
+                link: "/archive/establishment-prospectus",
+            },
+        ],
+    },
+];
+
+// アイテムタイプごとのアイコン設定
+const typeIcons = {
+    event: "mdi:calendar-star",
+    document: "mdi:file-document",
+    gallery: "mdi:image-multiple",
+    resource: "mdi:book-open-page-variant",
+    project: "mdi:rocket-launch",
+};
+
+// フィルタリング用のタイプ一覧
+const itemTypes = [
+    { id: "all", name: { ja: "すべて", en: "All", zh: "全部" } },
+    { id: "event", name: { ja: "イベント", en: "Events", zh: "活动" } },
+    { id: "document", name: { ja: "資料", en: "Documents", zh: "资料" } },
+    { id: "gallery", name: { ja: "ギャラリー", en: "Gallery", zh: "画廊" } },
+    { id: "resource", name: { ja: "教材", en: "Resources", zh: "教材" } },
+    { id: "project", name: { ja: "プロジェクト", en: "Projects", zh: "项目" } },
+];
+---
+
+<Layout
+    title={t({
+        ja: "アーカイブ",
+        en: "Archive",
+        zh: "档案",
+    })}
+    description={t({
+        ja: "OUS Metaverseの活動記録や成果物のアーカイブです。これまでの活動内容やプロジェクトの成果をご覧いただけます。",
+        en: "Archive of OUS Metaverse's activities and deliverables. You can see the contents of past activities and project results.",
+        zh: "OUS Metaverse活动记录和成果的档案。您可以查看过去活动内容和项目结果。",
+    })}
+>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
+                    {
+                        t({
+                            ja: "アーカイブ",
+                            en: "Archive",
+                            zh: "档案",
+                        })
+                    }
+                </h1>
+                <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
+                    {
+                        t({
+                            ja: "OUS Metaverseのこれまでの活動記録や成果物のアーカイブです。イベントの記録、プロジェクトの成果物、教材など、様々なコンテンツをご覧いただけます。",
+                            en: "Archive of OUS Metaverse's past activities and deliverables. You can browse various content such as event records, project deliverables, educational materials, and more.",
+                            zh: "OUS Metaverse过去活动记录和成果的档案。您可以浏览各种内容，如活动记录、项目成果、教育材料等。",
+                        })
+                    }
+                </p>
+            </div>
+        </section>
+
+        <!-- Archive Content -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <!-- タイプフィルター -->
+                <div class="mb-12 flex flex-wrap justify-center gap-2">
+                    {
+                        itemTypes.map((type) => (
+                            <button
+                                class="type-filter rounded-full border border-gray-200 bg-white px-6 py-2 text-sm font-medium text-gray-700 transition hover:border-[#6CB16E] hover:text-[#6CB16E] data-[active=true]:border-[#6CB16E] data-[active=true]:bg-[#6CB16E]/10 data-[active=true]:text-[#6CB16E]"
+                                data-type={type.id}
+                                data-active={type.id === "all" ? "true" : "false"}
+                            >
+                                {t(type.name)}
+                            </button>
+                        ))
+                    }
+                </div>
+
+                <!-- 年別アーカイブ -->
+                {
+                    archiveItems.map((yearGroup) => (
+                        <div class="mb-16">
+                            <h2 class="mb-8 inline-block border-b-4 border-[#6CB16E] pb-2 text-3xl font-bold text-gray-800">
+                                {yearGroup.year}
+                            </h2>
+
+                            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                {yearGroup.items.map((item) => (
+                                    <a
+                                        href={item.link}
+                                        class="archive-item group overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-lg"
+                                        data-type={item.type}
+                                    >
+                                        <div class="aspect-h-9 aspect-w-16 relative overflow-hidden">
+                                            <img
+                                                src={item.thumbnail}
+                                                alt={t(item.title)}
+                                                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            />
+                                            <div class="absolute top-0 left-0 m-4 rounded-full bg-white/90 p-2 backdrop-blur">
+                                                <Icon
+                                                    name={typeIcons[item.type] || "mdi:file"}
+                                                    class="h-5 w-5 text-[#6CB16E]"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="p-6">
+                                            <div class="mb-3 flex items-center justify-between">
+                                                <span class="inline-block rounded-full bg-[#6CB16E]/10 px-3 py-1 text-xs font-medium text-[#6CB16E]">
+                                                    {t(
+                                                        itemTypes.find(
+                                                            (type) => type.id === item.type,
+                                                        )?.name || { ja: "", en: "", zh: "" },
+                                                    )}
+                                                </span>
+                                                <span class="text-sm text-gray-500">
+                                                    {new Date(item.date).toLocaleDateString(
+                                                        Astro.currentLocale || "ja-JP",
+                                                        {
+                                                            year: "numeric",
+                                                            month: "short",
+                                                            day: "numeric",
+                                                        },
+                                                    )}
+                                                </span>
+                                            </div>
+                                            <h3 class="mb-2 text-lg font-bold text-gray-800 group-hover:text-[#6CB16E]">
+                                                {t(item.title)}
+                                            </h3>
+                                            <p class="line-clamp-3 text-sm text-gray-600">
+                                                {t(item.description)}
+                                            </p>
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    // タイプフィルタリング機能
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".type-filter");
+        const archiveItems = document.querySelectorAll(".archive-item");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                // ボタンのアクティブ状態を更新
+                filterButtons.forEach((btn) => btn.setAttribute("data-active", "false"));
+                button.setAttribute("data-active", "true");
+
+                const selectedType = button.getAttribute("data-type");
+
+                // アイテムのフィルタリング
+                archiveItems.forEach((item) => {
+                    const itemType = item.getAttribute("data-type");
+                    if (selectedType === "all" || selectedType === itemType) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>

@@ -59,7 +59,7 @@ bun run dev
 ### 🔧 技術スタック
 
 - **フレームワーク**: [Astro](https://astro.build/)
-- **スタイリング**: [TailwindCSS](https://tailwindcss.com/) + [Preline UI](https://preline.co/)
+- **スタイリング**: [TailwindCSS](https://tailwindcss.com/) + [daisyUI](https://daisyui.com/)
 - **多言語対応**: [astro-i18n-aut](https://github.com/jlarmstrongiv/astro-i18n-aut)
 - **アイコン**: [astro-icon](https://github.com/natemoo-re/astro-icon)
 - **SEO**: [astro-seo](https://github.com/jonasmerlin/astro-seo)
@@ -184,7 +184,7 @@ const { t } = useTranslations(Astro.url);
 
 ### 🎨 スタイリングガイド
 
-プロジェクトではTailwind CSSとPreline UIを使用しています。
+プロジェクトではTailwind CSSとdaisyUIを使用しています。
 
 #### Tailwind CSSの使用例
 
@@ -266,6 +266,6 @@ git push origin feature/your-feature-name
 
 - [Astro公式ドキュメント](https://docs.astro.build/)
 - [TailwindCSS公式ドキュメント](https://tailwindcss.com/docs)
-- [Preline UI公式ドキュメント](https://preline.co/docs/)
+- [daisyUI公式ドキュメント](https://daisyui.com/docs/intro/)
 
 質問や問題がある場合は、GitHubのIssueを通じてご連絡ください。

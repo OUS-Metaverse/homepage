@@ -1,0 +1,141 @@
+---
+import { Icon } from "astro-icon/components";
+import { useTranslations } from "../../libs/i18n";
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.png";
+
+const { t, l, locale } = useTranslations(Astro.url);
+
+const navItems = [
+    { name: { ja: "ホーム", en: "Home", zh: "首页" }, href: "/" },
+    { name: { ja: "サークル紹介", en: "About", zh: "关于我们" }, href: "/about" },
+    { name: { ja: "活動紹介", en: "Activities", zh: "活动介绍" }, href: "/activities" },
+    { name: { ja: "メンバー", en: "Members", zh: "成员" }, href: "/members" },
+    { name: { ja: "部室", en: "Club Room", zh: "部室" }, href: "/room" },
+    { name: { ja: "参加方法", en: "Join Us", zh: "加入方式" }, href: "/join" },
+    { name: { ja: "ニュース", en: "News", zh: "新闻" }, href: "/news" },
+    { name: { ja: "アーカイブ", en: "Archive", zh: "档案" }, href: "/archive" },
+    { name: { ja: "お問い合わせ", en: "Contact", zh: "联系我们" }, href: "/contact" },
+];
+
+const socialLinks = [
+    { name: "X", icon: "simple-icons:x", url: "https://x.com/OusMetaverse" },
+    { name: "Bluesky" , icon: "simple-icons:bluesky", url: "https://bsky.app/profile/ousmeta.com" },
+    { name: "YouTube", icon: "simple-icons:youtube", url: "https://youtube.com/@OUSMetaverse" },
+    { name: "GitHub", icon: "simple-icons:github", url: "https://github.com/OUS-Metaverse" },
+];
+
+const availableLocales = [
+    { code: "ja", name: "日本語" },
+    { code: "en", name: "English" },
+    { code: "zh", name: "中文" },
+];
+---
+
+<footer class="footer bg-neutral text-neutral-content p-10">
+    <div class="container mx-auto">
+        <div class="footer lg:footer-horizontal gap-10">
+            <!-- Logo and Description -->
+            <div class="max-w-xs">
+                <a href={l("/")} class="flex items-center">
+                    <Image src={logo} alt="OUS Metaverse" height={40} />
+                    <span class="ml-2 text-xl font-bold">OUS Metaverse</span>
+                </a>
+                <p class="mt-4 text-sm">
+                    {
+                        t({
+                            ja: "岡山理科大学の公認メタバースサークルです！「メタバースをもっと身近に」をモットーに活動しています。",
+                            en: "We are the official Metaverse club of Okayama University of Science! Our motto is 'Bringing the Metaverse Closer to Everyone.'",
+                            zh: "我们是冈山理科大学的官方元宇宙社团！我们的宗旨是让元宇宙更加贴近生活。",
+                        })
+                    }
+                </p>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex-1">
+                <h6 class="footer-title">
+                    {
+                        t({
+                            ja: "リンク",
+                            en: "Links",
+                            zh: "链接",
+                        })
+                    }
+                </h6>
+                <ul class="space-y-2">
+                    {
+                        navItems.map((item) => (
+                            <li>
+                                <a href={l(item.href)} class="link link-hover">
+                                    {t(item.name)}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </nav>
+
+            <!-- Social Media -->
+            <nav>
+                <h6 class="footer-title">
+                    {
+                        t({
+                            ja: "SNS",
+                            en: "Social Media",
+                            zh: "社交媒体",
+                        })
+                    }
+                </h6>
+                <div class="flex gap-4">
+                    {
+                        socialLinks.map((social) => (
+                            <a
+                                href={social.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn btn-circle btn-sm btn-ghost"
+                                aria-label={social.name}
+                            >
+                                <Icon name={social.icon} class="h-4 w-4" />
+                            </a>
+                        ))
+                    }
+                </div>
+            </nav>
+
+            <!-- Language Selector -->
+            <nav>
+                <h6 class="footer-title">
+                    {
+                        t({
+                            ja: "言語",
+                            en: "Language",
+                            zh: "语言",
+                        })
+                    }
+                </h6>
+                <div class="join">
+                    {
+                        availableLocales.map((l) => (
+                            <a
+                                href={`${l.code === "ja" ? "" : `/${l.code}`}${Astro.url.pathname.replace(/^\/(en|zh)/, "")}`}
+                                class={`join-item btn btn-sm ${
+                                    locale === l.code ? "btn-primary" : "btn-neutral"
+                                }`}
+                            >
+                                {l.name}
+                            </a>
+                        ))
+                    }
+                </div>
+            </nav>
+        </div>
+
+        <!-- Copyright -->
+        <div class="divider"></div>
+        <div class="text-center text-sm opacity-75">
+            <p>&copy; {new Date().getFullYear()} OUS Metaverse. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

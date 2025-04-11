@@ -1,0 +1,171 @@
+---
+import { Icon } from "astro-icon/components";
+import { useTranslations, getNameFromLocale } from "../../libs/i18n";
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.png";
+
+const { t, l, locale, allRoutes } = useTranslations(Astro.url);
+
+const navItems = [
+    {
+        name: t({ ja: "ホーム", en: "Home", zh: "首页" }),
+        href: "/",
+        dropdown: false,
+    },
+    {
+        name: t({ ja: "サークル案内", en: "About Us", zh: "关于社团" }),
+        href: "#",
+        dropdown: true,
+        items: [
+            { name: t({ ja: "サークル紹介", en: "About", zh: "关于我们" }), href: "/about" },
+            { name: t({ ja: "メンバー", en: "Members", zh: "成员" }), href: "/members" },
+            { name: t({ ja: "部室", en: "Club Room", zh: "部室" }), href: "/room" },
+        ],
+    },
+    {
+        name: t({ ja: "活動情報", en: "Activities", zh: "活动信息" }),
+        href: "#",
+        dropdown: true,
+        items: [
+            { name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍" }), href: "/activities" },
+            { name: t({ ja: "ニュース", en: "News", zh: "新闻" }), href: "/news" },
+            { name: t({ ja: "アーカイブ", en: "Archive", zh: "档案" }), href: "/archive" },
+        ],
+    },
+    {
+        name: t({ ja: "参加方法", en: "Join Us", zh: "加入我们" }),
+        href: "/join",
+        dropdown: false,
+    },
+    {
+        name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们" }),
+        href: "/contact",
+        dropdown: false,
+    },
+];
+---
+
+<header class="sticky top-0 z-50 w-full">
+    <div class="navbar bg-base-100 shadow-sm">
+        <div class="flex-1">
+            <!-- Logo -->
+            <a href={l("/")} class="flex items-center">
+                <Image src={logo} alt="OUS Metaverse" height={40} />
+                <span class="ml-2 text-xl font-bold">OUS Metaverse</span>
+            </a>
+        </div>
+
+        <div class="flex-none">
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex">
+                {
+                    navItems.map((item) =>
+                        item.dropdown ? (
+                            <div class="dropdown dropdown-hover">
+                                <div tabindex="0" role="button" class="btn btn-ghost">
+                                    <span>{item.name}</span>
+                                    <Icon
+                                        name="material-symbols:keyboard-arrow-down"
+                                        class="ml-1 h-4 w-4"
+                                    />
+                                </div>
+
+                                <ul
+                                    tabindex="0"
+                                    class="dropdown-content menu rounded-box bg-base-100 z-10 w-48 p-2 shadow"
+                                >
+                                    {item.items!.map((subItem) => (
+                                        <li>
+                                            <a href={l(subItem.href)}>{subItem.name}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : (
+                            <a href={l(item.href)} class="btn btn-ghost">
+                                {item.name}
+                            </a>
+                        ),
+                    )
+                }
+
+                <!-- Language Selector (Desktop) -->
+                <div class="dropdown dropdown-end ml-2">
+                    <div tabindex="0" role="button" class="btn btn-ghost">
+                        <span>
+                            {getNameFromLocale(locale)}
+                        </span>
+                        <Icon name="material-symbols:keyboard-arrow-down" class="ml-1 h-4 w-4" />
+                    </div>
+                    <ul
+                        tabindex="0"
+                        class="dropdown-content menu rounded-box bg-base-100 z-10 mt-2 w-48 p-2 shadow"
+                    >
+                        {
+                            Object.entries(allRoutes).map(([code, route]) => (
+                                <li>
+                                    <a href={route}>{getNameFromLocale(code)}</a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="lg:hidden">
+                <label for="mobile-drawer" class="btn btn-square btn-ghost">
+                    <Icon name="material-symbols:menu" class="h-6 w-6" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="drawer drawer-end lg:hidden">
+        <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-side">
+            <label for="mobile-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+            <div class="menu bg-base-100 text-base-content min-h-full w-64 p-4">
+                {
+                    navItems.map((item) =>
+                        item.dropdown ? (
+                            <div class="collapse-arrow collapse">
+                                <input type="checkbox" class="collapse-toggle" />
+                                <div class="collapse-title font-medium">{item.name}</div>
+                                <div class="collapse-content">
+                                    <ul class="menu">
+                                        {item.items!.map((subItem) => (
+                                            <li>
+                                                <a href={l(subItem.href)}>{subItem.name}</a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ) : (
+                            <a href={l(item.href)} class="btn btn-ghost w-full justify-start">
+                                {item.name}
+                            </a>
+                        ),
+                    )
+                }
+
+                <!-- Language Selector (Mobile) -->
+                <div class="divider"></div>
+                <h3 class="mb-2 px-2 font-medium">言語 / Language</h3>
+                <ul class="menu menu-sm p-0">
+                    {
+                        Object.entries(allRoutes).map(([code, route]) => (
+                            <li>
+                                <a href={route} class="py-2">
+                                    {getNameFromLocale(code)}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

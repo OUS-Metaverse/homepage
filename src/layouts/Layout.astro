@@ -4,6 +4,8 @@ import { useTranslations } from "../libs/i18n";
 import merge from "deepmerge";
 import "../styles/global.css";
 import type { DeepPartial } from "../libs/utils";
+import Header from "../components/layouts/Header.astro";
+import Footer from "../components/layouts/Footer.astro";
 
 const { t, locale, allRoutes } = useTranslations(Astro.url);
 
@@ -55,8 +57,11 @@ const mergedSEO = merge(defaultSEO, props);
         <meta name="generator" content={Astro.generator} />
         <SEO {...mergedSEO} />
     </head>
-    <body>
-        <slot />
-    </body><!-- Preline UI -->
-    <script is:inline src="../node_modules/preline/dist/index.js"></script>
+    <body class="flex min-h-screen flex-col bg-base-100">
+        <Header />
+        <div class="flex-1">
+            <slot />
+        </div>
+        <Footer />
+    </body>
 </html>

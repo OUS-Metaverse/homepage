@@ -1,21 +1,21 @@
 ---
 import { Icon } from "astro-icon/components";
-import { useTranslations } from "../../libs/i18n";
+import { useTranslations, getNameFromLocale } from "../../libs/i18n";
 import { Image } from "astro:assets";
 import logo from "../../assets/logo.png";
 
-const { t, l, locale } = useTranslations(Astro.url);
+const { t, l, locale, allRoutes } = useTranslations(Astro.url);
 
 const navItems = [
-    { name: { ja: "ホーム", en: "Home", zh: "首页" }, href: "/" },
-    { name: { ja: "サークル紹介", en: "About", zh: "关于我们" }, href: "/about" },
-    { name: { ja: "活動紹介", en: "Activities", zh: "活动介绍" }, href: "/activities" },
-    { name: { ja: "メンバー", en: "Members", zh: "成员" }, href: "/members" },
-    { name: { ja: "部室", en: "Club Room", zh: "部室" }, href: "/room" },
-    { name: { ja: "参加方法", en: "Join Us", zh: "加入方式" }, href: "/join" },
-    { name: { ja: "ニュース", en: "News", zh: "新闻" }, href: "/news" },
-    { name: { ja: "アーカイブ", en: "Archive", zh: "档案" }, href: "/archive" },
-    { name: { ja: "お問い合わせ", en: "Contact", zh: "联系我们" }, href: "/contact" },
+    { name: t({ ja: "ホーム", en: "Home", zh: "首页" }), href: "/" },
+    { name: t({ ja: "サークル紹介", en: "About", zh: "关于我们" }), href: "/about" },
+    { name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍" }), href: "/activities" },
+    { name: t({ ja: "メンバー", en: "Members", zh: "成员" }), href: "/members" },
+    { name: t({ ja: "部室", en: "Club Room", zh: "部室" }), href: "/room" },
+    { name: t({ ja: "参加方法", en: "Join Us", zh: "加入方式" }), href: "/join" },
+    { name: t({ ja: "ニュース", en: "News", zh: "新闻" }), href: "/news" },
+    { name: t({ ja: "アーカイブ", en: "Archive", zh: "档案" }), href: "/archive" },
+    { name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们" }), href: "/contact" },
 ];
 
 const socialLinks = [
@@ -23,12 +23,6 @@ const socialLinks = [
     { name: "Bluesky" , icon: "simple-icons:bluesky", url: "https://bsky.app/profile/ousmeta.com" },
     { name: "YouTube", icon: "simple-icons:youtube", url: "https://youtube.com/@OUSMetaverse" },
     { name: "GitHub", icon: "simple-icons:github", url: "https://github.com/OUS-Metaverse" },
-];
-
-const availableLocales = [
-    { code: "ja", name: "日本語" },
-    { code: "en", name: "English" },
-    { code: "zh", name: "中文" },
 ];
 ---
 
@@ -68,7 +62,7 @@ const availableLocales = [
                         navItems.map((item) => (
                             <li>
                                 <a href={l(item.href)} class="link link-hover">
-                                    {t(item.name)}
+                                    {item.name}
                                 </a>
                             </li>
                         ))
@@ -117,14 +111,14 @@ const availableLocales = [
                 </h6>
                 <div class="join">
                     {
-                        availableLocales.map((l) => (
+                        Object.entries(allRoutes).map(([lang, href]) => (
                             <a
-                                href={`${l.code === "ja" ? "" : `/${l.code}`}${Astro.url.pathname.replace(/^\/(en|zh)/, "")}`}
+                                href={new URL(href, Astro.site).href}
                                 class={`join-item btn btn-sm ${
-                                    locale === l.code ? "btn-primary" : "btn-neutral"
+                                    locale === lang ? "btn-primary" : "btn-neutral"
                                 }`}
                             >
-                                {l.name}
+                                {getNameFromLocale(lang)}
                             </a>
                         ))
                     }

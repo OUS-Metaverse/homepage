@@ -1,0 +1,126 @@
+---
+const GA_TRACKING_ID = "G-XXXXXXXXXX"; // Google AnalyticsのトラッキングID
+const CLARITY_PROJECT_ID = "YOUR_PROJECT_ID"; // Microsoft ClarityのプロジェクトID
+---
+
+{/* 本番環境でのみCookieバナーを表示 */}
+{import.meta.env.PROD && (
+    <div
+        id="cookie-banner"
+        class="fixed right-4 bottom-4 left-4 z-50 hidden"
+        data-ga-tracking-id={GA_TRACKING_ID}
+        data-clarity-project-id={CLARITY_PROJECT_ID}
+    >
+        <div class="alert bg-base-100 border-base-content border shadow-lg">
+            <div class="flex-1">
+                <span>
+                    このサイトでは利用状況の分析のため、Cookieを使用します。 利用にはGoogle
+                    AnalyticsおよびMicrosoft Clarityを含みます。
+                </span>
+            </div>
+            <div class="flex-none">
+                <button id="accept-cookies" class="btn btn-sm btn-primary ml-4">同意する</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const banner = document.getElementById("cookie-banner");
+            const consent = localStorage.getItem("cookieConsent");
+
+            const isInEU = await checkIfEU();
+
+            if (!isInEU) {
+                // EU外 → 自動同意
+                loadTrackingScripts();
+                return;
+            }
+
+            // EU内
+            if (consent === "true") {
+                loadTrackingScripts();
+            } else {
+                banner?.classList.remove("hidden");
+                document.getElementById("accept-cookies")?.addEventListener("click", () => {
+                    localStorage.setItem("cookieConsent", "true");
+                    banner?.classList.add("hidden");
+                    loadTrackingScripts();
+                });
+            }
+
+            async function checkIfEU(): Promise<boolean> {
+                interface IPAPIResponse {
+                    country_code: string;
+                }
+
+                try {
+                    const res = await fetch("https://ipapi.co/json/");
+                    const data = (await res.json()) as IPAPIResponse;
+                    const euCountries: string[] = [
+                        "AT",
+                        "BE",
+                        "BG",
+                        "HR",
+                        "CY",
+                        "CZ",
+                        "DK",
+                        "EE",
+                        "FI",
+                        "FR",
+                        "DE",
+                        "GR",
+                        "HU",
+                        "IE",
+                        "IT",
+                        "LV",
+                        "LT",
+                        "LU",
+                        "MT",
+                        "NL",
+                        "PL",
+                        "PT",
+                        "RO",
+                        "SK",
+                        "SI",
+                        "ES",
+                        "SE",
+                    ];
+                    return euCountries.includes(data.country_code);
+                } catch (e) {
+                    console.warn("地域判定に失敗しました。念のためCookieバナーを表示します。");
+                    return true; // フォールバック：安全のため表示
+                }
+            }
+
+            function loadTrackingScripts(): void {
+                // Google Analytics
+                const gaScript = document.createElement("script");
+                gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${banner?.dataset.gaTrackingId}`;
+                gaScript.async = true;
+                document.head.appendChild(gaScript);
+
+                // Define gtag function
+                interface GTagWindow extends Window {
+                    dataLayer: any[];
+                    gtag: (...args: any[]) => void;
+                }
+
+                gaScript.onload = () => {
+                    (window as unknown as GTagWindow).dataLayer =
+                        (window as unknown as GTagWindow).dataLayer || [];
+                    function gtag(...args: any[]): void {
+                        (window as unknown as GTagWindow).dataLayer.push(arguments);
+                    }
+                    gtag("js", new Date());
+                    gtag("config", banner?.dataset.gaTrackingId);
+                };
+
+                // Microsoft Clarity
+                const clarityScript = document.createElement("script");
+                clarityScript.text = `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${banner?.dataset.clarityProjectId}");`;
+                document.head.appendChild(clarityScript);
+            }
+        });
+    </script>
+)}

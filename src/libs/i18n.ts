@@ -6,17 +6,33 @@ import {
     getUrlWithoutLocale,
     locales,
 } from "astro-i18n-aut";
+import { getCollection } from "astro:content";
 
 export function useTranslations(url: URL) {
     const currentLocale = getLocale(url);
 
     return {
         t: (translations: Record<string, string>, options?: { targetLocale?: string }) => {
-            const targetLocale = options?.targetLocale ? options.targetLocale : currentLocale;
+            const targetLocale = options?.targetLocale || currentLocale;
             return translations[targetLocale] || translations[defaultLocale];
         },
         l: (route: string, options?: { targetLocale?: string }) =>
-            getLocaleUrl(route, options?.targetLocale ? options.targetLocale : currentLocale),
+            getLocaleUrl(route, options?.targetLocale || currentLocale),
+
+        getCollection: (async (collection: any, filter?: (entry: any) => boolean) => {
+            const regex = new RegExp(`\/${currentLocale}(\.[^\/]+)?$`);
+            const contents = await getCollection(
+                collection,
+                (entry: any) => regex.test(entry.id) && (filter ? filter(entry) : true),
+            );
+
+            return contents.map((item: any) => ({
+                ...item,
+                id: item.id.replace(regex, ""),
+                slug: item.slug.replace(regex, ""),
+            }));
+        }) as typeof getCollection,
+
         locale: currentLocale,
         locales,
         route: getUrlWithoutLocale(url),

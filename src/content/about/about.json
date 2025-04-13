@@ -1,0 +1,96 @@
+{
+    "milestones": [
+        {
+            "year": "2021",
+            "title": {
+                "ja": "OUS Metaverse設立",
+                "en": "OUS Metaverse Established",
+                "zh": "OUS Metaverse成立",
+                "ko": "OUS Metaverse 설립"
+            },
+            "description": {
+                "ja": "岡山理科大学初のメタバースサークルとして設立されました。",
+                "en": "Established as the first metaverse circle at Okayama University of Science.",
+                "zh": "作为冈山理科大学首个元宇宙社团成立。",
+                "ko": "오카야마 이과대학 최초의 메타버스 동아리로 설립되었습니다。"
+            }
+        },
+        {
+            "year": "2022",
+            "title": {
+                "ja": "大学公認サークルに認定",
+                "en": "Recognized as an Official University Circle",
+                "zh": "获得大学官方认证社团资格",
+                "ko": "대학 공식 동아리로 인정"
+            },
+            "description": {
+                "ja": "活動実績が認められ、大学公認サークルとして正式に認定されました。",
+                "en": "Recognized officially as a university-approved circle based on activity achievements.",
+                "zh": "因活动成绩获得认可，正式被认证为大学官方社团。",
+                "ko": "활동 실적이 인정되어 대학 공식 동아리로 정식 인증되었습니다。"
+            }
+        },
+        {
+            "year": "2023",
+            "title": {
+                "ja": "バーチャル学園祭の開催",
+                "en": "Virtual School Festival",
+                "zh": "举办虚拟校园节",
+                "ko": "가상 학교 축제 개최"
+            },
+            "description": {
+                "ja": "初めてのバーチャル学園祭を開催し、多くの参加者を集めました。",
+                "en": "Held the first virtual school festival, attracting many participants.",
+                "zh": "举办首届虚拟校园节，吸引了众多参与者。",
+                "ko": "첫 가상 학교 축제를 개최하여 많은 참가자를 모았습니다。"
+            }
+        }
+    ],
+    "activities": [
+        {
+            "icon": "mdi:gamepad-variant",
+            "title": {
+                "ja": "生活",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            },
+            "description": {
+                "ja": "",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            }
+        },
+        {
+            "icon": "mdi:gamepad-variant",
+            "title": {
+                "ja": "交流",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            },
+            "description": {
+                "ja": "",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            }
+        },
+        {
+            "icon": "mdi:gamepad-variant",
+            "title": {
+                "ja": "創作",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            },
+            "description": {
+                "ja": "",
+                "en": "",
+                "zh": "",
+                "ko": ""
+            }
+        }
+    ]
+}

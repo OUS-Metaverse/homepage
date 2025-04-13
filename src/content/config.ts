@@ -21,6 +21,26 @@ const topCollection = defineCollection({
     }),
 });
 
+// サークル紹介の「沿革」セクションのスキーマ
+const aboutCollection = defineCollection({
+    type: "data",
+    schema: z.object({
+        milestones: z.array(
+            z.object({
+                year: z.string(),
+                title: localizationStrings,
+                description: localizationStrings,
+            }),
+        ),
+        activities: z.array(
+            z.object({
+                icon: z.string(),
+                title: localizationStrings,
+                description: localizationStrings,
+            }),
+        ),
+    }),
+});
 
 // ニュース記事のスキーマ
 const newsCollection = defineCollection({
@@ -98,6 +118,7 @@ const membersCollection = defineCollection({
 
 export const collections = {
     top: topCollection,
+    about: aboutCollection,
     news: newsCollection,
     activities: activitiesCollection,
     members: membersCollection,

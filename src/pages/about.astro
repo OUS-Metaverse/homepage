@@ -1,268 +1,189 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import { useTranslations } from "../libs/i18n";
+import { getEntry } from "astro:content";
 
 const { t } = useTranslations(Astro.url);
 
-const milestones = [
-  {
-    year: "2021",
-    title: {
-      ja: "OUS Metaverse設立",
-      en: "OUS Metaverse Established",
-      zh: "OUS Metaverse成立",
-    },
-    description: {
-      ja: "岡山理科大学初のメタバースサークルとして設立されました。",
-      en: "Established as the first metaverse circle at Okayama University of Science.",
-      zh: "作为冈山理科大学首个元宇宙社团成立。",
-    },
-  },
-  {
-    year: "2022",
-    title: {
-      ja: "大学公認サークルに認定",
-      en: "Recognized as an Official University Circle",
-      zh: "获得大学官方认证社团资格",
-    },
-    description: {
-      ja: "活動実績が認められ、大学公認サークルとして正式に認定されました。",
-      en: "Recognized officially as a university-approved circle based on activity achievements.",
-      zh: "因活动成绩获得认可，正式被认证为大学官方社团。",
-    },
-  },
-  {
-    year: "2023",
-    title: {
-      ja: "バーチャル学園祭の開催",
-      en: "Virtual School Festival",
-      zh: "举办虚拟校园节",
-    },
-    description: {
-      ja: "初めてのバーチャル学園祭を開催し、多くの参加者を集めました。",
-      en: "Held the first virtual school festival, attracting many participants.",
-      zh: "举办首届虚拟校园节，吸引了众多参与者。",
-    },
-  },
-];
+const about = await getEntry("about", "about");
 ---
 
 <Layout
-  title={t({
-    ja: "サークル紹介",
-    en: "About Us",
-    zh: "关于我们",
-  })}
-  description={t({
-    ja: "OUS Metaverseは岡山理科大学公認のメタバースサークルです。サークルの理念や活動内容についてご紹介します。",
-    en: "OUS Metaverse is an official metaverse circle at Okayama University of Science. Learn about our philosophy and activities.",
-    zh: "OUS Metaverse是冈山理科大学官方认证的元宇宙社团。介绍我们的理念和活动内容。",
-  })}
+    title={t({
+        ja: "サークル紹介",
+        en: "About Us",
+        zh: "关于我们",
+        ko: "동아리 소개",
+    })}
+    description={t({
+        ja: "OUS Metaverseは岡山理科大学公認のメタバースサークルです。サークルの理念や活動内容についてご紹介します。",
+        en: "OUS Metaverse is an official metaverse circle at Okayama University of Science. Learn about our philosophy and activities.",
+        zh: "OUS Metaverse是冈山理科大学官方认证的元宇宙社团。介绍我们的理念和活动内容。",
+        ko: "OUS Metaverse는 오카야마 이과대학 공식 메타버스 동아리입니다. 동아리의 이념과 활동 내용을 소개합니다。",
+    })}
 >
-  <main>
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
-          {t({
-            ja: "OUS Metaverseについて",
-            en: "About OUS Metaverse",
-            zh: "关于OUS Metaverse",
-          })}
-        </h1>
-        <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
-          {t({
-            ja: "岡山理科大学公認のメタバースサークル「OUS Metaverse」の理念と活動内容をご紹介します。",
-            en: "Learn about the philosophy and activities of OUS Metaverse, the official metaverse circle at Okayama University of Science.",
-            zh: "介绍冈山理科大学官方认证的元宇宙社团\"OUS Metaverse\"的理念和活动内容。",
-          })}
-        </p>
-      </div>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="grid gap-12 md:grid-cols-2">
-          <div>
-            <h2 class="mb-4 text-3xl font-bold text-gray-800">
-              {t({
-                ja: "私たちの理念",
-                en: "Our Philosophy",
-                zh: "我们的理念",
-              })}
-            </h2>
-            <p class="mb-6 text-lg text-gray-600">
-              {t({
-                ja: "「メタバースをもっと身近に」をモットーに、テクノロジーの力で新たな交流と学びの場を創造します。",
-                en: "With the motto 'Making Metaverse More Accessible', we create new spaces for interaction and learning through the power of technology.",
-                zh: "以\"让元宇宙更贴近生活\"为理念，通过技术的力量创造新的交流和学习空间。",
-              })}
-            </p>
-            <p class="text-gray-600">
-              {t({
-                ja: "私たちは、VR/AR技術を通じて、物理的な制約を超えた新しい体験と可能性を探求します。メタバースは単なる仮想空間ではなく、人々が出会い、学び、創造するための新たなプラットフォームです。OUS Metaverseでは、このテクノロジーを大学生活に取り入れ、より豊かなキャンパスライフを実現します。",
-                en: "Through VR/AR technology, we explore new experiences and possibilities beyond physical constraints. The metaverse is not just a virtual space but a new platform for people to meet, learn, and create. At OUS Metaverse, we incorporate this technology into university life to realize a richer campus experience.",
-                zh: "通过VR/AR技术，我们探索超越物理限制的新体验和可能性。元宇宙不仅仅是虚拟空间，而是人们相遇、学习和创造的新平台。在OUS Metaverse，我们将这项技术融入大学生活，实现更丰富的校园体验。",
-              })}
-            </p>
-          </div>
-          <div>
-            <img
-              src="/assets/about/philosophy.jpg"
-              alt={t({
-                ja: "OUS Metaverseの理念",
-                en: "OUS Metaverse Philosophy",
-                zh: "OUS Metaverse的理念",
-              })}
-              class="rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- History Timeline -->
-    <section class="bg-gray-50 py-16">
-      <div class="container mx-auto px-4">
-        <h2 class="mb-12 text-center text-3xl font-bold text-gray-800">
-          {t({
-            ja: "沿革",
-            en: "History",
-            zh: "发展历程",
-          })}
-        </h2>
-
-        <div class="relative">
-          <!-- Timeline Line -->
-          <div class="absolute left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-[#6CB16E]"></div>
-
-          <!-- Timeline Items -->
-          <div class="space-y-16">
-            {
-              milestones.map((milestone, index) => (
-                <div class="relative">
-                  <!-- Year Circle -->
-                  <div class="absolute left-1/2 -translate-x-1/2 transform">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#6CB16E] text-white">
-                      {milestone.year}
-                    </div>
-                  </div>
-
-                  <div
-                    class={`flex flex-col ${
-                      index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                    } items-center`}
-                  >
-                    <div class="mb-8 w-full md:mb-0 md:w-1/2" />
-                    <div
-                      class={`w-full px-6 md:w-1/2 md:px-12 ${
-                        index % 2 === 0 ? "md:pl-16" : "md:pr-16"
-                      }`}
-                    >
-                      <div class="rounded-lg bg-white p-6 shadow-md">
-                        <h3 class="mb-2 text-xl font-bold text-gray-800">{t(milestone.title)}</h3>
-                        <p class="text-gray-600">{t(milestone.description)}</p>
-                      </div>
-                    </div>
-                  </div>
+    <main>
+        {/* Hero Section */}
+        <div class="hero bg-base-100 py-20">
+            <div class="hero-content text-center">
+                <div>
+                    <h1 class="mb-6 text-4xl font-bold md:text-5xl">
+                        {
+                            t({
+                                ja: "OUS Metaverseについて",
+                                en: "About OUS Metaverse",
+                                zh: "关于OUS Metaverse",
+                                ko: "OUS Metaverse에 대하여",
+                            })
+                        }
+                    </h1>
+                    <p class="mb-8 max-w-3xl text-lg">
+                        {
+                            t({
+                                ja: "岡山理科大学公認のメタバースサークル「OUS Metaverse」の理念と活動内容をご紹介します。",
+                                en: "Learn about the philosophy and activities of OUS Metaverse, the official metaverse circle at Okayama University of Science.",
+                                zh: '介绍冈山理科大学官方认证的元宇宙社团"OUS Metaverse"的理念和活动内容。',
+                                ko: "오카야마 이과대학 공식 메타버스 동아리 'OUS Metaverse'의 이념과 활동 내용을 소개합니다。",
+                            })
+                        }
+                    </p>
                 </div>
-              ))
-            }
-          </div>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Activities Overview -->
-    <section class="py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="mb-4 text-3xl font-bold text-gray-800">
-          {t({
-            ja: "活動内容",
-            en: "Activities",
-            zh: "活动内容",
-          })}
-        </h2>
-        <p class="mx-auto mb-12 max-w-3xl text-lg text-gray-600">
-          {t({
-            ja: "OUS Metaverseでは、以下のような活動を行っています。",
-            en: "At OUS Metaverse, we conduct the following activities.",
-            zh: "在OUS Metaverse，我们开展以下活动。",
-          })}
-        </p>
+        {/* 理念 */}
+        <section class="bg-base-200 py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid gap-12 md:grid-cols-2">
+                    {/* Text Content */}
+                    <div>
+                        <h2 class="mb-4 text-3xl font-bold">
+                            {
+                                t({
+                                    ja: "私たちの理念",
+                                    en: "Our Philosophy",
+                                    zh: "我们的理念",
+                                    ko: "우리의 이념",
+                                })
+                            }
+                        </h2>
+                        <p class="mb-6 text-lg">
+                            {
+                                t({
+                                    ja: "「メタバースをもっと身近に」をモットーに、メタバースと共に学生生活を彩り、まだ見ぬ明日を創造します。",
+                                    en: "With the motto 'Making Metaverse More Accessible', we create new spaces for interaction and learning through the power of technology.",
+                                    zh: '以"让元宇宙更贴近生活"为理念，通过技术的力量创造新的交流和学习空间。',
+                                    ko: "‘메타버스를 더 가까이’라는 모토로 기술의 힘을 통해 새로운 교류와 학습의 장을 창조합니다。",
+                                })
+                            }
+                        </p>
+                        <p>
+                            {
+                                t({
+                                    ja: "私たちは、VR/AR技術を通じて、物理的な制約を超えた新しい体験と可能性を探求します。メタバースは単なる仮想空間ではなく、人々が出会い、学び、創造するための新たなプラットフォームです。OUS Metaverseでは、このテクノロジーを大学生活に取り入れ、より豊かなキャンパスライフを実現します。",
+                                    en: "Through VR/AR technology, we explore new experiences and possibilities beyond physical constraints. The metaverse is not just a virtual space but a new platform for people to meet, learn, and create. At OUS Metaverse, we incorporate this technology into university life to realize a richer campus experience.",
+                                    zh: "通过VR/AR技术，我们探索超越物理限制的新体验和可能性。元宇宙不仅仅是虚拟空间，而是人们相遇、学习和创造的新平台。在OUS Metaverse，我们将这项技术融入大学生活，实现更丰富的校园体验。",
+                                    ko: "VR/AR 기술을 통해 물리적 제약을 넘어선 새로운 경험과 가능성을 탐구합니다. 메타버스는 단순한 가상 공간이 아니라 사람들이 만나고, 배우고, 창조할 수 있는 새로운 플랫폼입니다. OUS Metaverse에서는 이 기술을 대학 생활에 통합하여 더 풍요로운 캠퍼스 경험을 실현합니다。",
+                                })
+                            }
+                        </p>
+                    </div>
 
-        <div class="grid gap-8 md:grid-cols-3">
-          <!-- Activity 1 -->
-          <div class="rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg">
-            <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#6CB16E] text-white mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+                    {/* Image Content */}
+                    <div class="flex justify-center">
+                        <img
+                            src="/assets/about/philosophy.jpg"
+                            alt={t({
+                                ja: "OUS Metaverseの理念",
+                                en: "OUS Metaverse Philosophy",
+                                zh: "OUS Metaverse的理念",
+                                ko: "OUS Metaverse의 이념",
+                            })}
+                            class="w-full max-w-md rounded-lg shadow-lg"
+                        />
+                    </div>
+                </div>
             </div>
-            <h3 class="mb-3 text-xl font-semibold text-gray-800">
-              {t({
-                ja: "定例ミーティング",
-                en: "Regular Meetings",
-                zh: "定期会议",
-              })}
-            </h3>
-            <p class="text-gray-600">
-              {t({
-                ja: "週一回の定例ミーティングを行い、活動の進捗や新しいアイデアについて話し合います。バーチャルとリアルの両方で開催しています。",
-                en: "We hold weekly regular meetings to discuss activity progress and new ideas. Meetings are held both virtually and in person.",
-                zh: "我们每周举行定期会议，讨论活动进展和新想法。会议以虚拟和现实两种方式举行。",
-              })}
-            </p>
-          </div>
+        </section>
 
-          <!-- Activity 2 -->
-          <div class="rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg">
-            <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#6CB16E] text-white mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3 class="mb-3 text-xl font-semibold text-gray-800">
-              {t({
-                ja: "イベント開催",
-                en: "Events",
-                zh: "活动举办",
-              })}
-            </h3>
-            <p class="text-gray-600">
-              {t({
-                ja: "バーチャル学園祭やVR体験会など、メタバース空間を活用したイベントを企画・運営します。大学内外から多くの参加者を集めています。",
-                en: "We plan and organize events using metaverse spaces, such as virtual school festivals and VR experience sessions. We attract many participants from within and outside the university.",
-                zh: "我们策划和组织利用元宇宙空间的活动，如虚拟校园节和VR体验会。吸引了校内外的众多参与者。",
-              })}
-            </p>
-          </div>
+        {/* 沿革 */}
+        <section class="bg-base-100 py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-12 text-center text-3xl font-bold">
+                    {
+                        t({
+                            ja: "沿革",
+                            en: "History",
+                            zh: "发展历程",
+                            ko: "연혁",
+                        })
+                    }
+                </h2>
 
-          <!-- Activity 3 -->
-          <div class="rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg">
-            <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#6CB16E] text-white mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
+                <div class="grid gap-8">
+                    {
+                        about?.data.milestones.map((milestone) => (
+                            <div class="card bg-base-100 mx-auto w-full max-w-xl shadow-md">
+                                <div class="card-body">
+                                    <div class="mb-4 flex items-center">
+                                        <span class="badge badge-primary badge-lg mr-4">
+                                            {milestone.year}
+                                        </span>
+                                        <h3 class="card-title">{t(milestone.title)}</h3>
+                                    </div>
+                                    <p>{t(milestone.description)}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
-            <h3 class="mb-3 text-xl font-semibold text-gray-800">
-              {t({
-                ja: "スキル習得",
-                en: "Skill Acquisition",
-                zh: "技能习得",
-              })}
-            </h3>
-            <p class="text-gray-600">
-              {t({
-                ja: "3Dモデリング、VRワールド制作、Unityプログラミングなど、メタバース関連のスキル習得をサポートします。初心者向けの講習会も開催しています。",
-                en: "We support the acquisition of metaverse-related skills such as 3D modeling, VR world creation, and Unity programming. We also hold workshops for beginners.",
-                zh: "我们支持习得元宇宙相关技能，如3D建模、VR世界创建和Unity编程。我们还为初学者举办讲习会。",
-              })}
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        </section>
+
+        {/* 活動内容 */}
+        <section class="bg-base-200 py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="mb-4 text-3xl font-bold">
+                    {
+                        t({
+                            ja: "活動内容",
+                            en: "Activities",
+                            zh: "活动内容",
+                            ko: "활동 내용",
+                        })
+                    }
+                </h2>
+                <p class="mx-auto mb-12 max-w-3xl text-lg">
+                    {
+                        t({
+                            ja: "OUS Metaverseでは、以下のような活動を行っています。",
+                            en: "At OUS Metaverse, we conduct the following activities.",
+                            zh: "在OUS Metaverse，我们开展以下活动。",
+                            ko: "OUS Metaverse에서는 다음과 같은 활동을 진행하고 있습니다。",
+                        })
+                    }
+                </p>
+
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {
+                        about?.data.activities.map((activity) => (
+                            <div class="card bg-base-100 shadow-md transition hover:shadow-lg">
+                                <div class="card-body text-center">
+                                    <div class="card-title mb-3 flex-col gap-4">
+                                        <Icon
+                                            name={activity.icon}
+                                            class="bg-primary text-primary-content h-14 w-14 rounded-full p-3 md:h-16 md:w-16"
+                                        />
+                                        <h3 class="text-xl">{t(activity.title)}</h3>
+                                    </div>
+                                    <p class="text-base">{t(activity.description)}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>

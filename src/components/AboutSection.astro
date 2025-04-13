@@ -1,99 +1,64 @@
 ---
+import { getEntry } from "astro:content";
 import { useTranslations } from "../libs/i18n";
 import { Icon } from "astro-icon/components";
 
 const { t, l } = useTranslations(Astro.url);
 
-const features = [
-    {
-        icon: "material-symbols:head-mounted-device",
-        title: {
-            ja: "VR体験",
-            en: "VR Experience",
-            zh: "VR体验",
-        },
-        description: {
-            ja: "最新のVR技術を活用した体験やイベントを開催しています。",
-            en: "We organize experiences and events using the latest VR technology.",
-            zh: "我们组织使用最新VR技术的体验和活动。",
-        },
-    },
-    {
-        icon: "mdi:account-group",
-        title: {
-            ja: "コミュニティ",
-            en: "Community",
-            zh: "社区",
-        },
-        description: {
-            ja: "メタバース空間での交流を通じて、新たな友人や仲間と出会えます。",
-            en: "Meet new friends and colleagues through interactions in the metaverse space.",
-            zh: "通过元宇宙空间的互动，结识新朋友和同伴。",
-        },
-    },
-    {
-        icon: "mdi:creation",
-        title: {
-            ja: "クリエイティブ",
-            en: "Creative",
-            zh: "创意",
-        },
-        description: {
-            ja: "3Dモデリングやワールド制作など、創造的なスキルを身につけられます。",
-            en: "Acquire creative skills such as 3D modeling and world creation.",
-            zh: "掌握3D建模和世界创建等创意技能。",
-        },
-    },
-];
+const top = await getEntry("top", "top");
 ---
 
-<section class="bg-gray-50 py-16">
+<section class="bg-base-200 py-16">
     <div class="container mx-auto px-4">
         <div class="mb-12 text-center">
-            <h2 class="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+            <h2 class="text-base-content mb-4 text-3xl font-bold md:text-4xl">
                 {
                     t({
                         ja: "OUS Metaverseについて",
                         en: "About OUS Metaverse",
                         zh: "关于OUS Metaverse",
+                        ko: "OUS Metaverse에 대하여",
                     })
                 }
             </h2>
-            <p class="mx-auto max-w-3xl text-lg text-gray-600">
-                {
-                    t({
-                        ja: "私たちのサークルでは、メタバースを通じて新しい体験と可能性を探求しています。",
-                        en: "Our circle explores new experiences and possibilities through the metaverse.",
-                        zh: "我们的社团通过元宇宙探索新的体验和可能性。",
-                    })
-                }
-            </p>
+            <p
+                class="text-base-content mx-auto max-w-3xl text-lg"
+                set:html={t({
+                    ja: '私たちは、<b>メタバース</b>を通じて仲間たちと、誰も知らない明日を<b class="text-primary">作り</b>、<b class="text-primary">楽しむ</b>ために活動しています。',
+                    en: 'We are active in the <b>metaverse</b> to <b class="text-primary">create</b> and <b class="text-primary">enjoy</b> a tomorrow that no one knows with our friends.',
+                    zh: '我们通过<b>元宇宙</b>与伙伴们一起<b class="text-primary">创造</b>和<b class="text-primary">享受</b>一个无人知晓的明天。',
+                    ko: '우리는 <b>메타버스</b>를 통해 동료들과 함께 <b class="text-primary">창조</b>하고 <b class="text-primary">즐기는</b> 내일을 만들어갑니다.',
+                })}
+            />
         </div>
 
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {
-                features.map((feature) => (
-                    <div class="rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg">
-                        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#6CB16E] text-white">
-                            <Icon name={feature.icon} class="h-6 w-6" />
+                top?.data.features.map((feature) => (
+                    <div class="card bg-base-100 shadow-md transition hover:shadow-lg">
+                        <div class="card-body text-center">
+                            <div class="card-title mb-3 flex-col gap-4">
+                                <Icon
+                                    name={feature.icon}
+                                    class="bg-primary text-primary-content h-14 w-14 rounded-full p-3 md:h-16 md:w-16"
+                                />
+                                <h3 class="text-xl">{t(feature.title)}</h3>
+                            </div>
+                            <p class="text-base">{t(feature.description)}</p>
                         </div>
-                        <h3 class="mb-3 text-xl font-semibold text-gray-800">{t(feature.title)}</h3>
-                        <p class="text-gray-600">{t(feature.description)}</p>
                     </div>
                 ))
             }
         </div>
 
         <div class="mt-12 text-center">
-            <a
-                href={l("/about")}
-                class="inline-flex items-center rounded-md bg-[#6CB16E] px-6 py-3 text-white transition hover:bg-[#5a9a5c]"
-            >
+            <a href={l("/about")} class="btn btn-primary">
                 {
                     t({
                         ja: "もっと詳しく",
                         en: "Learn More",
                         zh: "了解更多",
+                        ko: "자세히 알아보기",
                     })
                 }
             </a>

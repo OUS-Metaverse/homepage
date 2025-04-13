@@ -1,0 +1,49 @@
+{
+    "features": [
+        {
+            "icon": "mdi:party-popper",
+            "title": {
+                "ja": "イベント",
+                "en": "VR Experience",
+                "zh": "VR体验",
+                "ko": "VR 체험"
+            },
+            "description": {
+                "ja": "リアル・バーチャル問わず様々なイベントの企画を行っています。",
+                "en": "We organize experiences and events using the latest VR technology.",
+                "zh": "我们组织使用最新VR技术的体验和活动。",
+                "ko": "최신 VR 기술을 활용한 체험과 이벤트를 개최하고 있습니다."
+            }
+        },
+        {
+            "icon": "mdi:account-group",
+            "title": {
+                "ja": "コミュニティ",
+                "en": "Community",
+                "zh": "社区",
+                "ko": "커뮤니티"
+            },
+            "description": {
+                "ja": "メタバース空間での交流を通じて、新たな友人や仲間と出会えます。",
+                "en": "Meet new friends and colleagues through interactions in the metaverse space.",
+                "zh": "通过元宇宙空间的互动，结识新朋友和同伴。",
+                "ko": "메타버스 공간에서의 교류를 통하여 새로운 친구나 동료를 사귈수 있습니다."
+            }
+        },
+        {
+            "icon": "mdi:creation",
+            "title": {
+                "ja": "クリエイティブ",
+                "en": "Creative",
+                "zh": "创意",
+                "ko": "창의적"
+            },
+            "description": {
+                "ja": "3Dモデリングやプログラミングなど、創造的なスキルを身につけられます。",
+                "en": "Acquire creative skills such as 3D modeling and world creation.",
+                "zh": "掌握3D建模和世界创建等创意技能。",
+                "ko": "3D 모델링 및 세계 제작과 같은 모델링 기술을 배우고 활용할수있습니다."
+            }
+        }
+    ]
+}

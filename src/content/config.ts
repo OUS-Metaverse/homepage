@@ -1,5 +1,27 @@
 import { defineCollection, z } from "astro:content";
 
+const localizationStrings = z.object({
+    ja: z.string(),
+    en: z.string(),
+    zh: z.string(),
+    ko: z.string(),
+});
+
+// トップページのスキーマ
+const topCollection = defineCollection({
+    type: "data",
+    schema: z.object({
+        features: z.array(
+            z.object({
+                icon: z.string(),
+                title: localizationStrings,
+                description: localizationStrings,
+            }),
+        ),
+    }),
+});
+
+
 // ニュース記事のスキーマ
 const newsCollection = defineCollection({
     type: "content",
@@ -58,22 +80,10 @@ const membersCollection = defineCollection({
             z.object({
                 id: z.string(),
                 name: z.string(),
-                role: z.object({
-                    ja: z.string(),
-                    en: z.string(),
-                    zh: z.string(),
-                }),
-                grade: z.object({
-                    ja: z.string(),
-                    en: z.string(),
-                    zh: z.string(),
-                }),
+                role: localizationStrings,
+                grade: localizationStrings,
                 avatar: z.string(),
-                comment: z.object({
-                    ja: z.string(),
-                    en: z.string(),
-                    zh: z.string(),
-                }),
+                comment: localizationStrings,
                 skills: z.array(z.string()).optional(),
                 socials: z
                     .array(
@@ -90,11 +100,7 @@ const membersCollection = defineCollection({
             z.object({
                 id: z.string(),
                 name: z.string(),
-                grade: z.object({
-                    ja: z.string(),
-                    en: z.string(),
-                    zh: z.string(),
-                }),
+                grade: localizationStrings,
                 avatar: z.string(),
                 skills: z.array(z.string()).optional(),
             }),
@@ -103,6 +109,7 @@ const membersCollection = defineCollection({
 });
 
 export const collections = {
+    top: topCollection,
     news: newsCollection,
     activities: activitiesCollection,
     members: membersCollection,

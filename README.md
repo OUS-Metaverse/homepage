@@ -6,6 +6,102 @@ OUS Metaverseは岡山理科大学の公認メタバースサークルです。�
 
 このリポジトリは、OUS Metaverseの公式ホームページのソースコードを管理しています。Astroフレームワークを使用して構築されています。
 
+## 📝 記事作成ガイドライン
+
+新しく記事を作成するには、ニュースなら[`src/content/news`](src/content/news)ディレクトリに、活動紹介なら[`src/content/activities`](src/content/activities)ディレクトリに新しいディレクトリを作成し、その中に言語ごとの記事ファイルを作成します。記事の書き分けについては[後述](#📰-ニュース)を参照してください。
+
+作成したディレクトリ名は記事のURLの一部になります。
+例えば、`2025-numa-fes`というディレクトリを作成すると、URLは`/news/2025-numa-fes`になります。
+
+ディレクトリ名は**小文字英数字**とハイフン（`-`）のみを使用してください。日本語や特殊文字は使用しないでください。
+実施年が明確な場合は、先頭に`2025-`のように年を付けることを推奨します。
+
+記事ファイルは、言語ごとに`ja.md`、`en.md`、`zh.md`、`ko.md`のように作成します。作成しなかった場合、その言語では記事が表示されません。
+
+### 📰 ニュース
+
+#### 用途
+
+- 対外発表・告知・終了報告など、**即時性の高い情報**の発信
+
+#### 掲載基準
+
+- 外部との接点があるもの（例：イベント参加、メディア掲載など）
+- 公式な発表や告知
+- 重要な更新・発表
+
+#### 記述ガイド
+
+- タイトルは具体的に（例：NUMA祭2025に出展しました）
+- 内容は簡潔に、重要な情報を強調
+
+#### フロントマター
+
+```markdown
+---
+title: "NUMA祭2025に出展しました"
+date: 2025-10-01
+image: "/images/news/2025-numa-fes/thumbnail.jpg"
+summary: "2025年10月に開催されるNUMA祭に出展します。"
+category: "event"
+tags: ["NUMA祭", "イベント"]
+relatedLinks:
+    - title: "NUMA公式サイト"
+        url: "https://numa-meta.com/"
+---
+```
+
+### 🎉 活動紹介
+
+#### 用途
+
+- サークルとして取り組んだ**プロジェクト・活動成果**の紹介
+
+#### 掲載基準
+
+- サークルメンバーの自主的な活動
+- 成果物や目標があるもの（例：PV制作、#今週のOUSMetaverse など）
+
+#### 記述ガイド
+
+- 背景、プロセス、成果をセットで記述
+- ギャラリーに写真を追加し、活動の雰囲気を伝える
+
+#### フロントマター
+
+```markdown
+---
+title: "PV制作"
+date: 2025-10-01
+featured: true
+image: "/images/activities/2025-circle-pv-creation/thumbnail.jpg"
+summary: "OUS Metaverseの活動を紹介するPVを制作しました。"
+category: "creation"
+tags: ["PV", "制作"]
+gallery:
+    - "/images/activities/2025-circle-pv-creation/image1.jpg"
+    - "/images/activities/2025-circle-pv-creation/image2.jpg"
+    - "/images/activities/2025-circle-pv-creation/image3.jpg"
+members:
+    - "さしみ"
+    - "みねたけ"
+    - "yuki"
+    - "鷹内かい"
+---
+```
+
+featuredは、活動紹介の中で特に目立たせたい記事を指定します。`true`に設定すると、活動紹介一覧で強調表示されます。
+categoryは以下のいずれかを指定できます。
+
+- `event` - イベント参加や開催
+- `workshop` - ワークショップや勉強会
+- `creation` - 制作物やプロジェクト
+- `contest` - コンテスト参加や開催
+- `academic` - 学術活動や研究
+- `other` - その他の活動
+
+## 📖 開発者ドキュメント
+
 ### 💻 開発環境のセットアップ
 
 #### 必要要件
@@ -39,8 +135,7 @@ bun run dev
 │   └── favicon.svg
 ├── src/
 │   ├── assets/     # コンポーネントで使用する画像やSVGなど
-│   │   ├── astro.svg
-│   │   └── background.svg
+│   │   ├── astro.png
 │   ├── components/ # 再利用可能なコンポーネント
 │   ├── layouts/    # ページレイアウトコンポーネント
 │   ├── libs/       # ユーティリティ関数など
@@ -267,5 +362,3 @@ git push origin feature/your-feature-name
 - [Astro公式ドキュメント](https://docs.astro.build/)
 - [TailwindCSS公式ドキュメント](https://tailwindcss.com/docs)
 - [daisyUI公式ドキュメント](https://daisyui.com/docs/intro/)
-
-質問や問題がある場合は、GitHubのIssueを通じてご連絡ください。

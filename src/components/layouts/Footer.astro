@@ -7,20 +7,29 @@ import logo from "../../assets/logo.png";
 const { t, l, locale, allRoutes } = useTranslations(Astro.url);
 
 const navItems = [
-    { name: t({ ja: "ホーム", en: "Home", zh: "首页" }), href: "/" },
-    { name: t({ ja: "サークル紹介", en: "About", zh: "关于我们" }), href: "/about" },
-    { name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍" }), href: "/activities" },
-    { name: t({ ja: "メンバー", en: "Members", zh: "成员" }), href: "/members" },
-    { name: t({ ja: "部室", en: "Club Room", zh: "部室" }), href: "/room" },
-    { name: t({ ja: "参加方法", en: "Join Us", zh: "加入方式" }), href: "/join" },
-    { name: t({ ja: "ニュース", en: "News", zh: "新闻" }), href: "/news" },
-    { name: t({ ja: "アーカイブ", en: "Archive", zh: "档案" }), href: "/archive" },
-    { name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们" }), href: "/contact" },
+    { name: t({ ja: "ホーム", en: "Home", zh: "首页", ko: "홈" }), href: "/" },
+    {
+        name: t({ ja: "サークル紹介", en: "About", zh: "关于我们", ko: "서클 소개" }),
+        href: "/about",
+    },
+    {
+        name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍", ko: "활동 소개" }),
+        href: "/activities",
+    },
+    { name: t({ ja: "メンバー", en: "Members", zh: "成员", ko: "멤버" }), href: "/members" },
+    { name: t({ ja: "部室", en: "Club Room", zh: "部室", ko: "동아리방" }), href: "/room" },
+    { name: t({ ja: "参加方法", en: "Join Us", zh: "加入方式", ko: "참여 방법" }), href: "/join" },
+    { name: t({ ja: "ニュース", en: "News", zh: "新闻", ko: "뉴스" }), href: "/news" },
+    { name: t({ ja: "アーカイブ", en: "Archive", zh: "档案", ko: "아카이브" }), href: "/archive" },
+    {
+        name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们", ko: "문의하기" }),
+        href: "/contact",
+    },
 ];
 
 const socialLinks = [
     { name: "X", icon: "simple-icons:x", url: "https://x.com/OusMetaverse" },
-    { name: "Bluesky" , icon: "simple-icons:bluesky", url: "https://bsky.app/profile/ousmeta.com" },
+    { name: "Bluesky", icon: "simple-icons:bluesky", url: "https://bsky.app/profile/ousmeta.com" },
     { name: "YouTube", icon: "simple-icons:youtube", url: "https://youtube.com/@OUSMetaverse" },
     { name: "GitHub", icon: "simple-icons:github", url: "https://github.com/OUS-Metaverse" },
 ];
@@ -41,6 +50,7 @@ const socialLinks = [
                             ja: "岡山理科大学の公認メタバースサークルです！「メタバースをもっと身近に」をモットーに活動しています。",
                             en: "We are the official Metaverse club of Okayama University of Science! Our motto is 'Bringing the Metaverse Closer to Everyone.'",
                             zh: "我们是冈山理科大学的官方元宇宙社团！我们的宗旨是让元宇宙更加贴近生活。",
+                            ko: "우리는 오카야마 이과대학의 공식 메타버스 서클입니다! 우리의 모토는 '메타버스를 더 가깝게'입니다.",
                         })
                     }
                 </p>
@@ -54,6 +64,7 @@ const socialLinks = [
                             ja: "リンク",
                             en: "Links",
                             zh: "链接",
+                            ko: "링크",
                         })
                     }
                 </h6>
@@ -78,6 +89,7 @@ const socialLinks = [
                             ja: "SNS",
                             en: "Social Media",
                             zh: "社交媒体",
+                            ko: "소셜 미디어",
                         })
                     }
                 </h6>
@@ -106,14 +118,15 @@ const socialLinks = [
                             ja: "言語",
                             en: "Language",
                             zh: "语言",
+                            ko: "언어",
                         })
                     }
                 </h6>
                 <div class="join">
                     {
-                        Object.entries(allRoutes).map(([lang, href]) => (
+                        Object.entries(allRoutes).map(([lang, route]) => (
                             <a
-                                href={new URL(href, Astro.site).href}
+                                href={route}
                                 class={`join-item btn btn-sm ${
                                     locale === lang ? "btn-primary" : "btn-neutral"
                                 }`}

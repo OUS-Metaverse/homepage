@@ -32,6 +32,8 @@ export function getNameFromLocale(locale: string) {
             return "English";
         case "zh":
             return "中文";
+        case "ko":
+            return "한국어";
         default:
             throw new Error(`Locale ${locale} not supported`);
     }

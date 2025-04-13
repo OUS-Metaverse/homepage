@@ -8,37 +8,49 @@ const { t, l, locale, allRoutes } = useTranslations(Astro.url);
 
 const navItems = [
     {
-        name: t({ ja: "ホーム", en: "Home", zh: "首页" }),
+        name: t({ ja: "ホーム", en: "Home", zh: "首页", ko: "홈" }),
         href: "/",
         dropdown: false,
     },
     {
-        name: t({ ja: "サークル案内", en: "About Us", zh: "关于社团" }),
+        name: t({ ja: "サークル案内", en: "About Us", zh: "关于社团", ko: "동아리 안내" }),
         href: "#",
         dropdown: true,
         items: [
-            { name: t({ ja: "サークル紹介", en: "About", zh: "关于我们" }), href: "/about" },
-            { name: t({ ja: "メンバー", en: "Members", zh: "成员" }), href: "/members" },
-            { name: t({ ja: "部室", en: "Club Room", zh: "部室" }), href: "/room" },
+            {
+                name: t({ ja: "サークル紹介", en: "About", zh: "关于我们", ko: "동아리 소개" }),
+                href: "/about",
+            },
+            {
+                name: t({ ja: "メンバー", en: "Members", zh: "成员", ko: "멤버" }),
+                href: "/members",
+            },
+            { name: t({ ja: "部室", en: "Club Room", zh: "部室", ko: "동아리방" }), href: "/room" },
         ],
     },
     {
-        name: t({ ja: "活動情報", en: "Activities", zh: "活动信息" }),
+        name: t({ ja: "活動情報", en: "Activities", zh: "活动信息", ko: "활동 정보" }),
         href: "#",
         dropdown: true,
         items: [
-            { name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍" }), href: "/activities" },
-            { name: t({ ja: "ニュース", en: "News", zh: "新闻" }), href: "/news" },
-            { name: t({ ja: "アーカイブ", en: "Archive", zh: "档案" }), href: "/archive" },
+            {
+                name: t({ ja: "活動紹介", en: "Activities", zh: "活动介绍", ko: "활동 소개" }),
+                href: "/activities",
+            },
+            { name: t({ ja: "ニュース", en: "News", zh: "新闻", ko: "뉴스" }), href: "/news" },
+            {
+                name: t({ ja: "アーカイブ", en: "Archive", zh: "档案", ko: "아카이브" }),
+                href: "/archive",
+            },
         ],
     },
     {
-        name: t({ ja: "参加方法", en: "Join Us", zh: "加入我们" }),
+        name: t({ ja: "参加方法", en: "Join Us", zh: "加入我们", ko: "가입 방법" }),
         href: "/join",
         dropdown: false,
     },
     {
-        name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们" }),
+        name: t({ ja: "お問い合わせ", en: "Contact", zh: "联系我们", ko: "문의하기" }),
         href: "/contact",
         dropdown: false,
     },
@@ -49,7 +61,7 @@ const navItems = [
     <div class="navbar bg-base-100 shadow-sm">
         <div class="flex-1">
             <!-- Logo -->
-            <a href={l("/")} class="flex items-center ml-2 lg:ml-4">
+            <a href={l("/")} class="ml-2 flex items-center lg:ml-4">
                 <Image src={logo} alt="OUS Metaverse" height={40} />
                 <span class="ml-2 text-xl font-bold">OUS Metaverse</span>
             </a>

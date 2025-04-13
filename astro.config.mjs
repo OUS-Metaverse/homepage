@@ -15,6 +15,7 @@ const locales = {
     ja: "ja-JP",
     en: "en-US",
     zh: "zh-CN",
+    ko: "ko-KR",
 };
 
 // https://astro.build/config
@@ -34,7 +35,7 @@ export default defineConfig({
     // 多言語対応の設定
     i18n: {
         defaultLocale: "ja",
-        locales: ["ja", "en", "zh"],
+        locales: ["ja", "en", "zh", "ko"],
     },
 
     // 統合プラグイン設定

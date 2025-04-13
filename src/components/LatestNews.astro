@@ -1,99 +1,79 @@
 ---
 import { useTranslations } from "../libs/i18n";
-const { t, l } = useTranslations(Astro.url);
+import { Image } from "astro:assets";
 
-// 実際のデータはContent Collectionsから取得するように変更することを想定
-const newsItems = [
-    {
-        title: {
-            ja: "NUMA祭に出展しました",
-            en: "We Exhibited at NUMA Festival",
-            zh: "我们在NUMA节上展出",
-        },
-        date: "2023-10-10",
-        summary: {
-            ja: "10月に開催されたNUMA祭にて、OUS Metaverseの展示ブースを出展しました。",
-            en: "We set up an exhibition booth for OUS Metaverse at the NUMA Festival held in October.",
-            zh: "我们在10月举行的NUMA节上设立了OUS Metaverse的展览摊位。",
-        },
-        slug: "numa-festival-2023",
-    },
-    {
-        title: {
-            ja: "新入生歓迎会を開催しました",
-            en: "Held Welcome Party for New Students",
-            zh: "举办了新生欢迎会",
-        },
-        date: "2023-04-15",
-        summary: {
-            ja: "4月15日に新入生歓迎会をバーチャル空間で開催しました。多くの新入生に参加いただきました。",
-            en: "We held a welcome party for new students in a virtual space on April 15. Many freshmen participated.",
-            zh: "4月15日，我们在虚拟空间举办了新生欢迎会。许多新生参加了活动。",
-        },
-        slug: "welcome-party-2023",
-    },
-];
+const { t, l, getCollection } = useTranslations(Astro.url);
+
+const newsItems = await getCollection("news");
 ---
 
-<section class="bg-gray-50 py-16">
+<section class="bg-base-200 py-16">
     <div class="container mx-auto px-4">
         <div class="mb-12 text-center">
-            <h2 class="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+            <h2 class="text-base-content mb-4 text-3xl font-bold md:text-4xl">
                 {
                     t({
                         ja: "最新ニュース",
                         en: "Latest News",
                         zh: "最新消息",
+                        ko: "최신 뉴스",
                     })
                 }
             </h2>
-            <p class="mx-auto max-w-3xl text-lg text-gray-600">
+            <p class="text-base-content/80 mx-auto max-w-3xl text-lg">
                 {
                     t({
                         ja: "OUS Metaverseの最新情報をお届けします。",
                         en: "Get the latest information about OUS Metaverse.",
                         zh: "获取有关OUS Metaverse的最新信息。",
+                        ko: "OUS Metaverse의 최신 정보를 제공합니다.",
                     })
                 }
             </p>
         </div>
 
-        <div class="grid gap-8 md:grid-cols-2">
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {
-                newsItems.map((news) => (
+                newsItems.slice(0, 3).map((news) => (
                     <a
-                        href={l(`/news/${news.slug}`)}
-                        class="group rounded-lg bg-white p-6 shadow-md transition hover:shadow-lg"
+                        href={l(`/activities/${news.slug}`)}
+                        class="card bg-base-100 group shadow-md transition hover:shadow-lg"
                     >
-                        <p class="mb-2 text-sm text-gray-500">
-                            {new Date(news.date).toLocaleDateString(
-                                Astro.currentLocale || "ja-JP",
-                                {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                },
-                            )}
-                        </p>
-                        <h3 class="mb-3 text-xl font-bold text-gray-800 group-hover:text-[#6CB16E]">
-                            {t(news.title)}
-                        </h3>
-                        <p class="text-gray-600">{t(news.summary)}</p>
+                        <figure class="aspect-[16/9] overflow-hidden">
+                            <Image
+                                src={news.data.image}
+                                alt={news.data.title}
+                                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </figure>
+                        <div class="card-body p-6">
+                            <p class="text-sm opacity-70">
+                                {new Date(news.data.date).toLocaleDateString(
+                                    Astro.currentLocale || "ja-JP",
+                                    {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    },
+                                )}
+                            </p>
+                            <h3 class="card-title hover:text-primary text-xl font-bold">
+                                {news.data.title}
+                            </h3>
+                        </div>
                     </a>
                 ))
             }
         </div>
 
         <div class="mt-12 text-center">
-            <a
-                href={l("/news")}
-                class="inline-flex items-center rounded-md border border-[#6CB16E] px-6 py-3 text-[#6CB16E] transition hover:bg-gray-50"
-            >
+            <a href={l("/news")} class="btn btn-outline btn-primary">
                 {
                     t({
                         ja: "すべてのニュースを見る",
                         en: "View All News",
                         zh: "查看所有消息",
+                        ko: "모든 뉴스를 보기",
                     })
                 }
             </a>

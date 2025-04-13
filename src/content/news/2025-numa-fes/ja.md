@@ -1,24 +1,14 @@
 ---
 title: "NUMA祭に出展しました"
-titleEn: "We Exhibited at NUMA Festival"
-titleZh: "我们在NUMA节上展出"
 date: "2023-10-10"
-cover: "/assets/news/numa-festival.jpg"
+image: "./images/numafes.png"
 summary: "10月に開催されたNUMA祭にて、OUS Metaverseの展示ブースを出展しました。"
-summaryEn: "We set up an exhibition booth for OUS Metaverse at the NUMA Festival held in October."
-summaryZh: "我们在10月举行的NUMA节上设立了OUS Metaverse的展览摊位。"
 category: "event"
 tags: ["NUMA祭", "展示会", "バーチャルキャンパス", "教育"]
-language: "ja"
-featured: true
 relatedLinks:
     - title: "NUMA祭公式サイト"
-      titleEn: "NUMA Festival Official Site"
-      titleZh: "NUMA节官方网站"
       url: "https://example.com/numa-festival"
     - title: "バーチャルキャンパスプロジェクト"
-      titleEn: "Virtual Campus Project"
-      titleZh: "虚拟校园项目"
       url: "https://example.com/virtual-campus"
 ---
 

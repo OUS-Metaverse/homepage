@@ -25,51 +25,39 @@ const topCollection = defineCollection({
 // ニュース記事のスキーマ
 const newsCollection = defineCollection({
     type: "content",
-    schema: z.object({
-        title: z.string(),
-        titleEn: z.string(),
-        titleZh: z.string(),
-        date: z.string().transform((str) => new Date(str)),
-        cover: z.string(),
-        summary: z.string(),
-        summaryEn: z.string(),
-        summaryZh: z.string(),
-        category: z.string(),
-        tags: z.array(z.string()),
-        language: z.enum(["ja", "en", "zh"]).default("ja"),
-        featured: z.boolean().default(false),
-        relatedLinks: z
-            .array(
-                z.object({
-                    title: z.string(),
-                    titleEn: z.string(),
-                    titleZh: z.string(),
-                    url: z.string(),
-                }),
-            )
-            .optional(),
-    }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            date: z.string().transform((str) => new Date(str)),
+            image: image(),
+            summary: z.string(),
+            category: z.string(),
+            tags: z.array(z.string()),
+            relatedLinks: z
+                .array(
+                    z.object({
+                        title: z.string(),
+                        url: z.string(),
+                    }),
+                )
+                .optional(),
+        }),
 });
 
 // 活動記事のスキーマ
 const activitiesCollection = defineCollection({
     type: "content",
-    schema: z.object({
-        title: z.string(),
-        titleEn: z.string(),
-        titleZh: z.string(),
-        date: z.string().transform((str) => new Date(str)),
-        image: z.string(),
-        summary: z.string(),
-        summaryEn: z.string(),
-        summaryZh: z.string(),
-        category: z.string(),
-        tags: z.array(z.string()),
-        language: z.enum(["ja", "en", "zh"]).default("ja"),
-        featured: z.boolean().default(false),
-        gallery: z.array(z.string()).optional(),
-        members: z.array(z.string()).optional(),
-    }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            date: z.string().transform((str) => new Date(str)),
+            image: image(),
+            summary: z.string(),
+            category: z.string(),
+            tags: z.array(z.string()),
+            gallery: z.array(z.string()).optional(),
+            members: z.array(z.string()).optional(),
+        }),
 });
 
 // メンバー情報のスキーマ

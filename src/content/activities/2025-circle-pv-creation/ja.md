@@ -1,16 +1,10 @@
 ---
 title: "VRChat内の新ワールド制作"
-titleEn: "Creating New Worlds in VRChat"
-titleZh: "在VRChat中创建新世界"
 date: "2023-11-15"
-image: "/assets/activities/vrchat-world.jpg"
+image: "./images/thumbnail.png"
 summary: "サークルメンバーで協力して、OUS Metaverseオリジナルの新しいVRChatワールドを制作しました。"
-summaryEn: "We collaborated with circle members to create a new VRChat world original to OUS Metaverse."
-summaryZh: "我们与社团成员合作，创建了OUS Metaverse原创的新VRChat世界。"
 category: "creation"
 tags: ["VRChat", "Unity", "3Dモデリング"]
-language: "ja"
-featured: true
 gallery:
     - "/assets/activities/gallery/vrchat-1.jpg"
     - "/assets/activities/gallery/vrchat-2.jpg"

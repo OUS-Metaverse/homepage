@@ -8,23 +8,23 @@
     color-scheme: light;
 
     /* 仕様書の基調色を使用 */
-    --color-base-100: #F8FAF7; /* 白 */
+    --color-base-100: #f8faf7; /* 白 */
     --color-base-200: #eef1ed; /* 少し暗い白（コントラスト用） */
     --color-base-300: #e4e7e3; /* より暗い白（コントラスト用） */
-    --color-base-content: #1D2D1F; /* 黒（テキスト用） */
-    
-    --color-primary: #6CB16E; /* 黄緑（メインカラー） */
-    --color-primary-content: #F8FAF7; /* 白（プライマリ上のテキスト） */
-    
+    --color-base-content: #1d2d1f; /* 黒（テキスト用） */
+
+    --color-primary: #6cb16e; /* 黄緑（メインカラー） */
+    --color-primary-content: #f8faf7; /* 白（プライマリ上のテキスト） */
+
     --color-secondary: #5a9f5c; /* やや暗い緑（セカンダリカラー） */
-    --color-secondary-content: #F8FAF7; /* 白（セカンダリ上のテキスト） */
-    
+    --color-secondary-content: #f8faf7; /* 白（セカンダリ上のテキスト） */
+
     --color-accent: #3d7e3f; /* より暗い緑（アクセントカラー） */
-    --color-accent-content: #F8FAF7; /* 白（アクセント上のテキスト） */
-    
-    --color-neutral: #1D2D1F; /* 黒（中立色） */
-    --color-neutral-content: #F8FAF7; /* 白（中立色上のテキスト） */
-    
+    --color-accent-content: #f8faf7; /* 白（アクセント上のテキスト） */
+
+    --color-neutral: #1d2d1f; /* 黒（中立色） */
+    --color-neutral-content: #f8faf7; /* 白（中立色上のテキスト） */
+
     /* セマンティックカラー */
     --color-info: #3abff8;
     --color-info-content: #002b3d;

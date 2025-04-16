@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { useTranslations } from "../libs/i18n";
-import hero_image from "../assets/hero-image.png";
+import { useTranslations } from "../../libs/i18n";
+import hero_image from "../../assets/hero-image.png";
 
 const { t, l } = useTranslations(Astro.url);
 ---
@@ -9,14 +9,10 @@ const { t, l } = useTranslations(Astro.url);
 <section class="hero bg-base-100 py-20">
     <div class="hero-content flex-col lg:flex-row-reverse">
         <div class="lg:w-1/2">
-            <Image
-                src={hero_image}
-                alt="OUS Metaverse"
-                class="rounded-lg shadow-xl max-w-full"
-            />
+            <Image src={hero_image} alt="OUS Metaverse" class="max-w-full rounded-lg shadow-xl" />
         </div>
         <div class="lg:w-1/2">
-            <h1 class="text-4xl font-bold text-base-content md:text-5xl lg:text-6xl">
+            <h1 class="text-base-content text-4xl font-bold md:text-5xl lg:text-6xl">
                 {
                     t({
                         ja: "メタバースをもっと身近に",
@@ -25,7 +21,7 @@ const { t, l } = useTranslations(Astro.url);
                     })
                 }
             </h1>
-            <p class="py-6 text-xl text-base-content/70">
+            <p class="text-base-content/70 py-6 text-xl">
                 {
                     t({
                         ja: "OUS Metaverseは岡山理科大学の公認メタバースサークルです。私たちは大学生活をメタバースでより豊かにするために活動しています。",
@@ -35,10 +31,7 @@ const { t, l } = useTranslations(Astro.url);
                 }
             </p>
 
-            <a
-                href={l("/join")}
-                class="btn btn-primary join-item"
-            >
+            <a href={l("/join")} class="btn btn-primary join-item">
                 {
                     t({
                         ja: "サークルに参加する",
@@ -47,10 +40,7 @@ const { t, l } = useTranslations(Astro.url);
                     })
                 }
             </a>
-            <a
-                href={l("/about")}
-                class="btn btn-outline btn-primary join-item"
-            >
+            <a href={l("/about")} class="btn btn-outline btn-primary join-item">
                 {
                     t({
                         ja: "詳しく知る",

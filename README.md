@@ -337,7 +337,8 @@ git push origin feature/your-feature-name
 - `feat:` - 新機能
 - `fix:` - バグ修正
 - `docs:` - ドキュメント変更
-- `style:` - フォーマット変更
+- `style:` - スタイル変更
+- `format:` - フォーマット変更
 - `refactor:` - リファクタリング
 - `perf:` - パフォーマンス改善
 - `test:` - テスト追加・修正

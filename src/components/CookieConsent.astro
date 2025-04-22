@@ -1,9 +1,6 @@
 ---
 import { useTranslations } from "../libs/i18n.ts";
 
-const GA_TRACKING_ID = "G-XXXXXXXXXX"; // Google AnalyticsのトラッキングID
-const CLARITY_PROJECT_ID = "YOUR_PROJECT_ID"; // Microsoft ClarityのプロジェクトID
-
 const { t } = useTranslations(Astro.url);
 ---
 
@@ -12,8 +9,8 @@ const { t } = useTranslations(Astro.url);
     <div
         id="cookie-banner"
         class="fixed right-4 bottom-4 left-4 z-50 hidden"
-        data-ga-tracking-id={GA_TRACKING_ID}
-        data-clarity-project-id={CLARITY_PROJECT_ID}
+        data-ga-tracking-id={import.meta.env.GA_TRACKING_ID}
+        data-clarity-project-id={import.meta.env.CLARITY_PROJECT_ID}
     >
         <div class="alert bg-base-100 border-base-content border shadow-lg">
             <div class="flex-1">

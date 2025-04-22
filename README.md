@@ -1,5 +1,26 @@
 # OUS Metaverse ホームページ
 
+## 🔒 ライセンスと利用について
+
+> [!WARNING]
+> **Not Open Source / 再利用禁止**
+
+このリポジトリは、**実績公開および技術的参考のために限定的に公開しています**。
+
+- ソースコード、画像、文章など**すべてのコンテンツの再利用、再配布は禁止**します。
+- クローンや転載、改変を伴う利用は一切許可していません。
+- 何らかの利用を希望される場合は、事前に作者までご連絡ください。
+
+---
+
+This repository is **not open source**.
+
+It is made public for **portfolio and reference purposes only**.
+
+- Reuse, redistribution, and deployment are strictly prohibited.
+- Do not copy, clone, or use any part of this repository in your own projects.
+- Contact the maintainer for any usage inquiries.
+
 ## 🚀 プロジェクト概要
 
 OUS Metaverseは岡山理科大学の公認メタバースサークルです。私たちは「メタバースをもっと身近に」をモットーに、より多くの人にメタバースの魅力を広めつつ、メタバースと共に楽しく大学生活を送るために活動しています。

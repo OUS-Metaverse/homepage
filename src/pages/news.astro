@@ -1,113 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { useTranslations } from "../libs/i18n";
+import { Icon } from "astro-icon/components";
 
-const { t, l } = useTranslations(Astro.url);
+const { t, l, getCollection } = useTranslations(Astro.url);
 
-// 実際の実装ではContent Collectionsを使用してデータを取得
-const newsItems = [
-    {
-        slug: "numa-festival-2023",
-        title: {
-            ja: "NUMA祭に出展しました",
-            en: "We Exhibited at NUMA Festival",
-            zh: "我们在NUMA节上展出",
-        },
-        date: "2023-10-10",
-        cover: "/assets/news/numa-festival.jpg",
-        summary: {
-            ja: "10月に開催されたNUMA祭にて、OUS Metaverseの展示ブースを出展しました。VRヘッドセットを用いたデモや活動紹介を行い、多くの方に体験いただきました。",
-            en: "We set up an exhibition booth for OUS Metaverse at the NUMA Festival held in October. We conducted demos using VR headsets and introduced our activities, allowing many people to experience them.",
-            zh: "我们在10月举行的NUMA节上设立了OUS Metaverse的展览摊位。我们使用VR头显进行演示并介绍了我们的活动，让许多人体验了它们。",
-        },
-        category: "event",
-        featured: true,
-    },
-    {
-        slug: "welcome-party-2023",
-        title: {
-            ja: "新入生歓迎会を開催しました",
-            en: "Held Welcome Party for New Students",
-            zh: "举办了新生欢迎会",
-        },
-        date: "2023-04-15",
-        cover: "/assets/news/welcome-party.jpg",
-        summary: {
-            ja: "4月15日に新入生歓迎会をバーチャル空間で開催しました。多くの新入生に参加いただき、メタバース空間でのコミュニケーションを楽しみました。",
-            en: "We held a welcome party for new students in a virtual space on April 15. Many freshmen participated and enjoyed communication in the metaverse space.",
-            zh: "4月15日，我们在虚拟空间举办了新生欢迎会。许多新生参加并享受了在元宇宙空间中的交流。",
-        },
-        category: "event",
-        featured: false,
-    },
-    {
-        slug: "vr-workshop-series",
-        title: {
-            ja: "VRワークショップシリーズを開始します",
-            en: "Starting VR Workshop Series",
-            zh: "开始VR工作坊系列",
-        },
-        date: "2023-05-20",
-        cover: "/assets/news/vr-workshop.jpg",
-        summary: {
-            ja: "5月より毎月第2土曜日に、初心者向けVRワークショップシリーズを開始します。VRの基礎からアバター作成、ワールド制作まで、段階的に学べるカリキュラムを用意しました。",
-            en: "From May, we will start a VR workshop series for beginners on the second Saturday of every month. We have prepared a curriculum that allows you to learn step by step, from VR basics to avatar creation and world creation.",
-            zh: "从5月开始，我们将在每月第二个周六开始面向初学者的VR工作坊系列。我们准备了一个课程，让您逐步学习，从VR基础到头像创建和世界创建。",
-        },
-        category: "education",
-        featured: true,
-    },
-    {
-        slug: "metaverse-study-group",
-        title: {
-            ja: "メタバース研究会が発足しました",
-            en: "Metaverse Study Group Established",
-            zh: "元宇宙研究小组成立",
-        },
-        date: "2023-06-01",
-        cover: "/assets/news/study-group.jpg",
-        summary: {
-            ja: "サークル内に「メタバース研究会」が発足しました。教育、ビジネス、エンターテイメントなど様々な分野でのメタバースの可能性を研究していきます。",
-            en: "A 'Metaverse Study Group' has been established within our circle. We will research the possibilities of the metaverse in various fields such as education, business, and entertainment.",
-            zh: '在我们的社团内成立了"元宇宙研究小组"。我们将研究元宇宙在教育、商业和娱乐等各个领域的可能性。',
-        },
-        category: "education",
-        featured: false,
-    },
-    {
-        slug: "collaboration-announcement",
-        title: {
-            ja: "地元企業との連携プロジェクトが決定",
-            en: "Collaboration Project with Local Company Decided",
-            zh: "与当地企业的合作项目确定",
-        },
-        date: "2023-07-10",
-        cover: "/assets/news/collaboration.jpg",
-        summary: {
-            ja: "地元IT企業との連携プロジェクトが決定しました。バーチャル展示会の共同開発を行い、学生の視点を活かした新しいメタバース体験を提供します。",
-            en: "A collaboration project with a local IT company has been decided. We will jointly develop a virtual exhibition and provide a new metaverse experience utilizing the perspective of students.",
-            zh: "与当地IT公司的合作项目已经确定。我们将共同开发虚拟展览，并提供利用学生视角的新元宇宙体验。",
-        },
-        category: "collaboration",
-        featured: true,
-    },
-];
+const newsItems = await getCollection("news");
 
 // カテゴリの定義
 const categories = [
-    { id: "all", name: { ja: "すべて", en: "All", zh: "全部" } },
-    { id: "event", name: { ja: "イベント", en: "Events", zh: "活动" } },
-    { id: "education", name: { ja: "教育", en: "Education", zh: "教育" } },
-    { id: "collaboration", name: { ja: "連携", en: "Collaboration", zh: "合作" } },
+    { id: "all", name: { ja: "すべて", en: "All", zh: "全部", ko: "전체" } },
+    { id: "event", name: { ja: "イベント", en: "Events", zh: "活动", ko: "이벤트" } },
+    { id: "education", name: { ja: "教育", en: "Education", zh: "教育", ko: "교육" } },
+    { id: "collaboration", name: { ja: "連携", en: "Collaboration", zh: "合作", ko: "협력" } },
 ];
-
-// ニュースを日付順にソート
-const sortedNews = [...newsItems].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-);
-
-// 注目のニュース
-const featuredNews = sortedNews.filter((news) => news.featured);
 ---
 
 <Layout
@@ -115,215 +22,234 @@ const featuredNews = sortedNews.filter((news) => news.featured);
         ja: "ニュース",
         en: "News",
         zh: "新闻",
+        ko: "뉴스",
     })}
     description={t({
         ja: "OUS Metaverseの最新ニュースをお届けします。イベント情報やプロジェクト発表など、サークルの最新情報を確認できます。",
         en: "Delivering the latest news from OUS Metaverse. Check the latest information about the circle, including event information and project announcements.",
         zh: "传递OUS Metaverse的最新消息。查看有关社团的最新信息，包括活动信息和项目公告。",
+        ko: "OUS Metaverse의 최신 뉴스를 제공합니다. 이벤트 정보와 프로젝트 발표 등 서클의 최신 정보를 확인하세요.",
     })}
 >
     <main>
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-b from-[#6CB16E]/20 to-white py-20">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="mb-6 text-4xl font-bold text-gray-800 md:text-5xl">
-                    {
-                        t({
-                            ja: "ニュース",
-                            en: "News",
-                            zh: "新闻",
-                        })
-                    }
-                </h1>
-                <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
-                    {
-                        t({
-                            ja: "OUS Metaverseの最新情報をお届けします。イベントやプロジェクト、メンバー募集など、サークルの活動に関する情報をチェックしてください。",
-                            en: "We deliver the latest information from OUS Metaverse. Please check information about circle activities such as events, projects, and member recruitment.",
-                            zh: "我们传递OUS Metaverse的最新信息。请查看有关社团活动的信息，如活动、项目和成员招募。",
-                        })
-                    }
-                </p>
+        {/* Hero Section */}
+        <div class="hero from-base-200 to-base-100 bg-gradient-to-b py-20">
+            <div class="hero-content text-center">
+                <div>
+                    <h1 class="text-4xl font-bold md:text-5xl">
+                        {
+                            t({
+                                ja: "ニュース",
+                                en: "News",
+                                zh: "新闻",
+                                ko: "뉴스",
+                            })
+                        }
+                    </h1>
+                    <p class="max-w-3xl py-6 text-lg">
+                        {
+                            t({
+                                ja: "OUS Metaverseの最新情報をお届けします。イベントやプロジェクト、メンバー募集など、サークルの活動に関する情報をチェックしてください。",
+                                en: "We deliver the latest information from OUS Metaverse. Please check information about circle activities such as events, projects, and member recruitment.",
+                                zh: "我们传递OUS Metaverse的最新信息。请查看有关社团活动的信息，如活动、项目和成员招募。",
+                                ko: "OUS Metaverse의 최신 정보를 제공합니다. 이벤트, 프로젝트, 멤버 모집 등 서클 활동에 대한 정보를 확인하세요.",
+                            })
+                        }
+                    </p>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <!-- News Content -->
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <!-- Featured News -->
-                {
-                    featuredNews.length > 0 && (
-                        <div class="mb-16">
-                            <h2 class="mb-8 text-2xl font-bold text-gray-800">
-                                {t({
-                                    ja: "注目のニュース",
-                                    en: "Featured News",
-                                    zh: "精选新闻",
-                                })}
-                            </h2>
+        {/* News List Section */}
+        <div class="container mx-auto px-4" id="news-list" data-category="all">
+            {/* Category Filter */}
+            <form id="category-filter">
+				{/* Mobile */}
+                <div class="mb-12 flex justify-center md:hidden">
+                    <select class="select select-bordered w-full max-w-xs" name="category">
+                        {
+                            categories.map((category) => (
+                                <option value={category.id}>{t(category.name)}</option>
+                            ))
+                        }
+                    </select>
+                </div>
 
-                            <div class="grid gap-8 lg:grid-cols-2">
-                                {featuredNews.slice(0, 2).map((news) => (
-                                    <a
-                                        href={l(`/news/${news.slug}`)}
-                                        class="group overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-xl"
-                                    >
-                                        <div class="aspect-h-9 aspect-w-16 overflow-hidden">
-                                            <img
-                                                src={news.cover}
-                                                alt={t(news.title)}
-                                                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                            />
-                                        </div>
-                                        <div class="p-6">
-                                            <div class="mb-3 flex items-center justify-between">
-                                                <span class="inline-block rounded-full bg-[#6CB16E]/10 px-3 py-1 text-xs font-medium text-[#6CB16E]">
-                                                    {t(
-                                                        categories.find(
-                                                            (cat) => cat.id === news.category,
-                                                        )?.name || { ja: "", en: "", zh: "" },
-                                                    )}
-                                                </span>
-                                                <span class="text-sm text-gray-500">
-                                                    {new Date(news.date).toLocaleDateString(
-                                                        Astro.currentLocale || "ja-JP",
-                                                        {
-                                                            year: "numeric",
-                                                            month: "long",
-                                                            day: "numeric",
-                                                        },
-                                                    )}
-                                                </span>
-                                            </div>
-                                            <h3 class="mb-3 text-xl font-bold text-gray-800 group-hover:text-[#6CB16E]">
-                                                {t(news.title)}
-                                            </h3>
-                                            <p class="mb-4 text-gray-600">{t(news.summary)}</p>
-                                            <div class="flex items-center text-[#6CB16E]">
-                                                <span class="text-sm font-medium">
-                                                    {t({
-                                                        ja: "詳細を見る",
-                                                        en: "Read More",
-                                                        zh: "阅读更多",
-                                                    })}
-                                                </span>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="ml-2 h-4 w-4"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    )
-                }
-
-                <!-- Category Filters -->
-                <div class="mb-8 flex flex-wrap justify-center gap-2">
+				{/* Desktop */}
+                <div class="join mb-12 hidden justify-center md:flex">
                     {
                         categories.map((category) => (
-                            <button
-                                class="category-filter rounded-full border border-gray-200 bg-white px-6 py-2 text-sm font-medium text-gray-700 transition hover:border-[#6CB16E] hover:text-[#6CB16E] data-[active=true]:border-[#6CB16E] data-[active=true]:bg-[#6CB16E]/10 data-[active=true]:text-[#6CB16E]"
-                                data-category={category.id}
-                                data-active={category.id === "all" ? "true" : "false"}
-                            >
-                                {t(category.name)}
-                            </button>
+                            <input
+                                class="join-item btn category-filter"
+                                type="radio"
+                                name="category"
+                                checked={category.id === "all"}
+                                aria-label={t(category.name)}
+                                value={category.id}
+                            />
                         ))
                     }
                 </div>
+            </form>
 
-                <!-- All News -->
-                <h2 class="mb-8 text-2xl font-bold text-gray-800">
-                    {
-                        t({
-                            ja: "すべてのニュース",
-                            en: "All News",
-                            zh: "所有新闻",
-                        })
-                    }
-                </h2>
+			{/* Featured News */}
+			<div class="mb-16">
+				<h2 class="mb-8 text-2xl font-bold">
+					{t({
+						ja: "注目のニュース",
+						en: "Featured News",
+						zh: "精选新闻",
+						ko: "주목할 뉴스",
+					})}
+				</h2>
 
-                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="news-grid">
-                    {
-                        sortedNews.map((news) => (
-                            <a
-                                href={l(`/news/${news.slug}`)}
-                                class="news-card group overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-lg"
-                                data-category={news.category}
-                            >
-                                <div class="aspect-h-9 aspect-w-16 overflow-hidden">
-                                    <img
-                                        src={news.cover}
-                                        alt={t(news.title)}
-                                        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
+				<div class="grid gap-8 lg:grid-cols-2">
+					{
+						newsItems
+							.slice(0, 2)
+							.map((news) => (
+						<a 
+							href={l(`/news/${news.slug}`)}
+							class="card bg-base-100 news-card hidden shadow-xl"
+							data-category={news.data.category}
+						>
+							<figure>
+								<Image
+									src={news.data.image}
+									alt={news.data.title}
+									class="h-full w-full object-cover"
+								/>
+							</figure>
+							<div class="card-body">
+								<div class="mb-3 flex items-center justify-between">
+									<span class="badge badge-primary">
+										{t(
+											categories.find(
+												(cat) => cat.id === news.data.category
+											)?.name || { ja: "", en: "", zh: "", ko: "" }
+										)}
+									</span>
+									<span class="text-sm opacity-70">
+										{news.data.date.toLocaleDateString(
+											Astro.currentLocale || "ja-JP",
+											{
+												year: "numeric",
+												month: "long",
+												day: "numeric",
+											}
+										)}
+									</span>
+								</div>
+								<h3 class="card-title">{news.data.title}</h3>
+								<p>{news.data.summary}</p>
+								<div class="card-actions mt-4 justify-end">
+									<button class="btn btn-primary btn-sm">
+										{t({
+											ja: "詳細を見る",
+											en: "Read More",
+											zh: "阅读更多",
+											ko: "자세히 보기",
+										})}
+										<Icon name="mdi:arrow-right" class="ml-1 h-4 w-4" />
+									</button>
+								</div>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+
+			{/* All News */}
+            <h2 class="mb-8 text-2xl font-bold">
+                {
+                    t({
+                        ja: "すべてのニュース",
+                        en: "All News",
+                        zh: "所有新闻",
+                        ko: "모든 뉴스",
+                    })
+                }
+            </h2>
+
+            <div class="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {
+                    newsItems.map((news) => (
+                        <div
+                            class="card bg-base-100 news-card hidden shadow-md hover:shadow-lg"
+                            data-category={news.data.category}
+                        >
+                            <figure>
+                                <Image
+                                    src={news.data.image}
+                                    alt={news.data.title}
+                                    class="h-full w-full object-cover"
+                                />
+                            </figure>
+                            <div class="card-body p-4">
+                                <div class="mb-2 flex items-center justify-between">
+                                    <span class="badge badge-sm badge-primary">
+                                        {t(
+                                            categories.find((cat) => cat.id === news.data.category)
+                                                ?.name || { ja: "", en: "", zh: "", ko: "" }
+                                        )}
+                                    </span>
+                                    <span class="text-xs opacity-70">
+                                        {news.data.date.toLocaleDateString(
+                                            Astro.currentLocale || "ja-JP",
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            }
+                                        )}
+                                    </span>
                                 </div>
-                                <div class="p-6">
-                                    <div class="mb-3 flex items-center justify-between">
-                                        <span class="inline-block rounded-full bg-[#6CB16E]/10 px-3 py-1 text-xs font-medium text-[#6CB16E]">
-                                            {t(
-                                                categories.find((cat) => cat.id === news.category)
-                                                    ?.name || { ja: "", en: "", zh: "" },
-                                            )}
-                                        </span>
-                                        <span class="text-sm text-gray-500">
-                                            {new Date(news.date).toLocaleDateString(
-                                                Astro.currentLocale || "ja-JP",
-                                                { year: "numeric", month: "long", day: "numeric" },
-                                            )}
-                                        </span>
-                                    </div>
-                                    <h3 class="mb-2 text-lg font-bold text-gray-800 group-hover:text-[#6CB16E]">
-                                        {t(news.title)}
-                                    </h3>
-                                    <p class="line-clamp-2 text-sm text-gray-600">
-                                        {t(news.summary)}
-                                    </p>
+                                <h3 class="card-title text-base">{news.data.title}</h3>
+                                <p class="line-clamp-2 text-sm opacity-80">
+                                    {news.data.summary}
+                                </p>
+                                <div class="card-actions mt-2 justify-end">
+                                    <a
+                                        href={l(`/news/${news.slug}`)}
+                                        class="btn btn-sm btn-link"
+                                    >
+                                        {t({
+                                            ja: "詳細",
+                                            en: "Details",
+                                            zh: "详情",
+                                            ko: "상세",
+                                        })}
+                                    </a>
                                 </div>
-                            </a>
-                        ))
-                    }
-                </div>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
-        </section>
+        </div>
+        <script>
+            const categoryFilter = document.getElementById("category-filter") as HTMLFormElement;
+            const newsList = document.getElementById("news-list")!;
+
+            categoryFilter.addEventListener("change", (event) => {
+                const selectedCategory = (event.target as HTMLInputElement).value;
+                newsList.dataset.category = selectedCategory;
+            });
+        </script>
     </main>
 </Layout>
 
-<script>
-    // カテゴリフィルタリング
-    document.addEventListener("DOMContentLoaded", () => {
-        const filterButtons = document.querySelectorAll(".category-filter");
-        const newsCards = document.querySelectorAll(".news-card");
-
-        filterButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                // ボタンのアクティブ状態を更新
-                filterButtons.forEach((btn) => btn.setAttribute("data-active", "false"));
-                button.setAttribute("data-active", "true");
-
-                const selectedCategory = button.getAttribute("data-category");
-
-                // ニュースのフィルタリング
-                newsCards.forEach((card) => {
-                    const cardCategory = card.getAttribute("data-category");
-                    if (selectedCategory === "all" || selectedCategory === cardCategory) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            });
-        });
-    });
-</script>
+<style>
+    [data-category="all"] .news-card {
+        display: block;
+    }
+    [data-category="event"] .news-card[data-category="event"] {
+        display: block;
+    }
+    [data-category="education"] .news-card[data-category="education"] {
+        display: block;
+    }
+    [data-category="collaboration"] .news-card[data-category="collaboration"] {
+        display: block;
+    }
+</style>

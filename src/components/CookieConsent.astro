@@ -1,6 +1,10 @@
 ---
+import { useTranslations } from "../libs/i18n.ts";
+
 const GA_TRACKING_ID = "G-XXXXXXXXXX"; // Google AnalyticsのトラッキングID
 const CLARITY_PROJECT_ID = "YOUR_PROJECT_ID"; // Microsoft ClarityのプロジェクトID
+
+const { t } = useTranslations(Astro.url);
 ---
 
 {/* 本番環境でのみCookieバナーを表示 */}
@@ -14,12 +18,23 @@ const CLARITY_PROJECT_ID = "YOUR_PROJECT_ID"; // Microsoft Clarityのプロジ�
         <div class="alert bg-base-100 border-base-content border shadow-lg">
             <div class="flex-1">
                 <span>
-                    このサイトでは利用状況の分析のため、Cookieを使用します。 利用にはGoogle
-                    AnalyticsおよびMicrosoft Clarityを含みます。
+					{t({
+						ja: "このサイトでは、より良いサービスを提供するためにCookieを使用しています。Cookieの使用に同意する場合は、「同意する」ボタンをクリックしてください。",
+						en: "This site uses cookies to provide a better service. If you agree to the use of cookies, please click the 'Accept' button.",
+						zh: "本网站使用Cookie来提供更好的服务。如果您同意使用Cookie，请单击“接受”按钮。",
+						ko: "이 사이트는 더 나은 서비스를 제공하기 위해 쿠키를 사용합니다. 쿠키 사용에 동의하시면 '동의' 버튼을 클릭하세요.",
+					})}
                 </span>
             </div>
             <div class="flex-none">
-                <button id="accept-cookies" class="btn btn-sm btn-primary ml-4">同意する</button>
+                <button id="accept-cookies" class="btn btn-sm btn-primary ml-4">
+					{t({
+						ja: "同意する",
+						en: "Accept",
+						zh: "接受",
+						ko: "동의합니다",
+					})}
+				</button>
             </div>
         </div>
     </div>

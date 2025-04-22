@@ -71,12 +71,13 @@ const activitiesCollection = defineCollection({
         z.object({
             title: z.string(),
             date: z.string().transform((str) => new Date(str)),
+            featured: z.boolean(),
             image: image(),
             summary: z.string(),
             category: z.string(),
             tags: z.array(z.string()),
-            gallery: z.array(z.string()).optional(),
-            members: z.array(z.string()).optional(),
+            gallery: z.array(z.string()),
+            members: z.array(z.string()),
         }),
 });
 

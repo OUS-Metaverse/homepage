@@ -1,6 +1,7 @@
 ---
 title: "VRChat内の新ワールド制作"
 date: "2023-11-15"
+featured: true
 image: "./images/thumbnail.png"
 summary: "サークルメンバーで協力して、OUS Metaverseオリジナルの新しいVRChatワールドを制作しました。"
 category: "creation"

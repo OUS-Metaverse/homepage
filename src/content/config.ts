@@ -84,26 +84,26 @@ const activitiesCollection = defineCollection({
 // メンバー情報のスキーマ
 const membersCollection = defineCollection({
     type: "data",
-    schema: ({ image }) => z.array(
-        z.object({
-            avatar: image(),
-            name: z.string(),
-            role: localizationStrings.optional(),
-            executive: z.boolean(),
-            ob: z.boolean(),
-            grade: localizationStrings,
-            comment: localizationStrings,
-            skills: z.array(z.string()),
-            socials: z
-                .array(
+    schema: ({ image }) =>
+        z.array(
+            z.object({
+                avatar: image(),
+                name: z.string(),
+                role: localizationStrings.optional(),
+                executive: z.boolean(),
+                ob: z.boolean(),
+                grade: localizationStrings,
+                comment: localizationStrings,
+                skills: z.array(z.string()),
+                socials: z.array(
                     z.object({
                         name: z.string(),
                         url: z.string(),
                         icon: z.string(),
                     }),
                 ),
-        })
-    )
+            }),
+        ),
 });
 
 export const collections = {

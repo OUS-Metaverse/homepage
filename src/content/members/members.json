@@ -24,7 +24,11 @@
         },
         "skills": ["Unity", "VRChat SDK", "Blender", "C#"],
         "socials": [
-            { "name": "Twitter", "url": "https://twitter.com/example", "icon": "simple-icons:twitter" },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/example",
+                "icon": "simple-icons:twitter"
+            },
             { "name": "GitHub", "url": "https://github.com/example", "icon": "simple-icons:github" }
         ]
     },
@@ -73,7 +77,11 @@
         },
         "skills": ["Unity", "VRChat SDK", "Blender", "C#"],
         "socials": [
-            { "name": "Twitter", "url": "https://twitter.com/example", "icon": "simple-icons:twitter" },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/example",
+                "icon": "simple-icons:twitter"
+            },
             { "name": "GitHub", "url": "https://github.com/example", "icon": "simple-icons:github" }
         ]
     }

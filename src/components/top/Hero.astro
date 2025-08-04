@@ -12,15 +12,27 @@ const { t, l } = useTranslations(Astro.url);
             <Image src={hero_image} alt="OUS Metaverse" class="max-w-full rounded-lg shadow-xl" />
         </div>
         <div class="lg:w-1/2">
-            <h1 class="text-base-content text-4xl font-bold md:text-5xl lg:text-6xl">
-                {
-                    t({
-                        ja: "メタバースをもっと身近に",
-                        en: "Bringing the Metaverse Closer to Everyone",
-                        zh: "让元宇宙更贴近生活",
-                    })
-                }
-            </h1>
+			<h1 class="text-base-content text-4xl font-bold md:text-5xl lg:text-6xl">
+				{
+					t({
+						ja: "メタバースを",
+						en: "Bringing the Metaverse",
+						zh: "让元宇宙",
+						ko: "메타버스를",
+					})
+				}
+				<br />
+				<span class="text-primary">
+					{
+						t({
+							ja: "もっと身近に",
+							en: "Closer to Everyone",
+							zh: "更贴近生活",
+							ko: "더 가까이",
+						})
+					}
+				</span>
+			</h1>
             <p class="text-base-content/70 py-6 text-xl">
                 {
                     t({

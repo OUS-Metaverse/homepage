@@ -34,7 +34,7 @@ const socialLinks = [
 ];
 ---
 
-<footer class="footer bg-neutral text-neutral-content p-10">
+<footer class="footer p-10">
     <div class="container mx-auto">
         <div class="footer lg:footer-horizontal gap-10">
             <!-- Logo and Description -->
@@ -71,7 +71,7 @@ const socialLinks = [
                     {
                         navItems.map((item) => (
                             <li>
-                                <a href={l(item.href)} class="link link-hover">
+                                <a href={l(item.href)} class="link no-underline hover:text-primary transition-colors duration-200">
                                     {item.name}
                                 </a>
                             </li>
@@ -127,7 +127,7 @@ const socialLinks = [
                             <a
                                 href={route}
                                 class={`join-item btn btn-sm ${
-                                    locale === lang ? "btn-primary" : "btn-neutral"
+                                    locale === lang && "btn-primary"
                                 }`}
                             >
                                 {getNameFromLocale(lang)}

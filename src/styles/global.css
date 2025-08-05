@@ -2,6 +2,7 @@
 @plugin "daisyui" {
     themes: light --default;
 }
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -11,8 +12,8 @@
   --color-base-200: oklch(97% 0 0);
   --color-base-300: oklch(92% 0 0);
   --color-base-content: oklch(20% 0 0);
-  --color-primary: oklch(84% 0.238 128.85);
-  --color-primary-content: oklch(26% 0.051 172.552);
+  --color-primary: #84cc16;
+  --color-primary-content: oklch(97% 0.021 166.113);
   --color-secondary: oklch(79% 0.209 151.711);
   --color-secondary-content: oklch(26% 0.065 152.934);
   --color-accent: oklch(86% 0.005 56.366);
@@ -28,7 +29,7 @@
   --color-error: oklch(57% 0.245 27.325);
   --color-error-content: oklch(97% 0.013 17.38);
   --radius-selector: 1rem;
-  --radius-field: 0.25rem;
+  --radius-field: 0.5rem;
   --radius-box: 0.5rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;

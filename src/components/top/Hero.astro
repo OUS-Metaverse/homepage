@@ -6,7 +6,7 @@ import hero_image from "../../assets/hero-image.png";
 const { t, l } = useTranslations(Astro.url);
 ---
 
-<section class="hero bg-base-100 py-20">
+<section class="hero bg-gradient-to-r from-lime-50 to-base-100 py-20">
     <div class="hero-content flex-col lg:flex-row-reverse">
         <div class="lg:w-1/2">
             <Image src={hero_image} alt="OUS Metaverse" class="max-w-full rounded-lg shadow-xl" />
@@ -39,25 +39,28 @@ const { t, l } = useTranslations(Astro.url);
                         ja: "OUS Metaverseは岡山理科大学の公認メタバースサークルです。私たちは大学生活をメタバースでより豊かにするために活動しています。",
                         en: "OUS Metaverse is an official metaverse circle at Okayama University of Science. We are working to enhance university life through the metaverse.",
                         zh: "OUS Metaverse是冈山理科大学官方认证的元宇宙社团。我们致力于通过元宇宙提升大学生活。",
+                        ko: "OUS Metaverse는 오카야마과학대학교의 공식 메타버스 동아리입니다. 우리는 메타버스를 통해 대학 생활을 더욱 풍요롭게 만들기 위해 활동하고 있습니다。",
                     })
                 }
             </p>
 
-            <a href={l("/join")} class="btn btn-primary join-item">
+            <a href={l("/about")} class="btn btn-primary">
                 {
                     t({
-                        ja: "サークルに参加する",
-                        en: "Join Our Circle",
-                        zh: "加入我们的社团",
+                        ja: "私たちについて",
+                        en: "About Us",
+                        zh: "关于我们",
+                        ko: "우리에 대해",
                     })
                 }
             </a>
-            <a href={l("/about")} class="btn btn-outline btn-primary join-item">
+            <a href={l("/activities")} class="btn btn-outline btn-primary">
                 {
                     t({
-                        ja: "詳しく知る",
-                        en: "Learn More",
-                        zh: "了解更多",
+                        ja: "活動を見る",
+                        en: "See Activities",
+                        zh: "查看活动",
+                        ko: "활동 보기",
                     })
                 }
             </a>
